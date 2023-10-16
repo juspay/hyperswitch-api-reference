@@ -91,5 +91,5 @@
     "github": "https://github.com/mintlify",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
   },
-  "openapi": "https://github.com/juspay/hyperswitch/blob/main/openapi/openapi_spec.json"
+  "openapi": "https://raw.githubusercontent.com/juspay/hyperswitch/main/openapi/openapi_spec.json"
 }
