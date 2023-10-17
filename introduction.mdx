@@ -1,71 +1,69 @@
 ---
-title: Introduction
-description: "Welcome to the home of your new documentation"
+tags: [Getting Started]
+stoplight-id: 3lmsk7ocvq21v
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+# 👋 Welcome to Hyperswitch API Reference
 
-## Setting up
+Hyperswitch provides a collection of APIs that enable you to process and manage payments. Our APIs accept and return JSON in the HTTP body and return standard HTTP response codes. You can consume the APIs directly using your favorite HTTP/REST library.
 
-The first step to world-class documentation is setting up your editing environnments.
+## Environment
 
-<CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
-  </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
+We have a testing environment referred to "sandbox," which you can set up to test API calls without affecting production data. You can sign up on our Dashboard to get API keys to access Hyperswitch API.
 
-## Make it yours
+Use the following base URLs when making requests to the APIs:
 
-Update your docs to your brand and add valuable content for the best user conversion.
+| Environment | Base URL                       |
+| ----------- | ------------------------------ |
+| Sandbox     | https://sandbox.hyperswitch.io |
+| Production  | https://api.hyperswitch.io     |
 
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>
+> Note: If you **do not hold a PCI certification** to collect and store card data on your servers, we recommend using [**Unified Checkout**](https://hyperswitch.io/docs/sdkIntegrations/unifiedCheckoutWeb/#unified-checkout) to accept card information from users.
+
+## Authentication and API keys
+
+Hyperswitch authenticates your API requests using your account’s API keys. Each account has two API keys for authentication:
+
+| Key                  | Example         | When to Use                                                                                                                              |
+| -------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Secret key (API-key) | `snd_c69***`    | Used to authenticate API requests from your merchant server. **Don’t expose this key** on a website or embed it in a mobile application. |
+| Publishable key      | `pk_snd_3b3***` | Used to authenticate API requests from your app’s client. Can be publicly-accessible in your web or mobile app’s client-side code.       |
+
+> **Quick Links**
+>
+> - Get your [API key](https://app.hyperswitch.io/developers?tabIndex=1) and [Publishable Key](https://app.hyperswitch.io/home)
+> - [Postman Collection](https://www.postman.com/hyperswitch/workspace/hyperswitch-development/collection/25176162-630b5353-7002-44d1-8ba1-ead6c230f2e3)
+
+<Tabs>
+  <Tab title="Endpoints and Schema">
+    Hyperswitch’s Payments API is a comprehensive, robust API that could take care of various complex global payments scenarios. Find below an overview of our API endpoints and schema:
+    | API              | Endpoints                                                            |
+    | ---------------- | -------------------------------------------------------------------- |
+    | **Payments**     | `/payments`, `/payments/{payment_id}/confirm`, and more.           |
+    | **Mandates**     | `/mandates/{mandate_id}`, `/mandates/revoke/{mandate_id}`.         |
+    | **Refunds**      | `/refunds`, `/refunds/{refund_id}` (retrieve).                    |
+    | **Customers**    | `/customers`, `/customers/{customer_id}` (retrieve and update).    |
+    | **Payment Methods** | `/payment_methods`, `/payment_methods/{method_id}` (update and delete). |
+    | **Disputes**     | `/disputes/{dispute_id}` (retrieve).                                |
+
+    > Payments API essentially requires only two steps to process a payment through Hyperswitch:
+>
+> 1. [Create a payment](https://api-reference.hyperswitch.io/docs/hyperswitch-api-reference/e1a81db94434f-payments-create).
+> 2. [Confirm a payment](https://api-reference.hyperswitch.io/docs/hyperswitch-api-reference/871e78d3875ed-payments-confirm).
+  </Tab>
+  <Tab title="Payment Status Lifecycle">
+    Hyperswitch handles the complex functionality of a comprehensive payments flow through the Payments object that transitions through multiple states during its payments lifecycle. Given below are the various statuses a payment can have:
+
+| Payment Status           | Description                                                                                                                                                                                                 |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| requires_payment_method  | Once you create a payment through payments/create endpoint with no payment method attached to it, the payments object transitions to ‘requires_payment_method’.                                             |
+| requires_confirmation    | After attaching a payment method through payments/update endpoint, the payments object requires you to confirm the payment.                                                                                 |
+| requires_customer_action | Once the payment is confirmed through payments/confirm endpoint, if additional authentication is required, the payments object transitions to this state.                                                   |
+| requires_capture         | If you want to do separate authorize and capture, setting capture field to ‘manual’ during payments/create or confirm call will transition the payment object to this state after customer action succeeds. |
+| processing               | In case of automatic capture, the payments object transitions to processing state post confirm call and subsequent customer authentication if available.                                                    |
+| succeeded                | The payments object reaches success state post confirmation of successful processing from the payment processor.                                                                                            |
+| failed                   | The payments object transitions to a failed state when the payment processor confirms the processing failure.                                                                                               |
+| expired                  | You can expire the payments object while it is in any state except when it is under ‘processing’ or ‘succeeded’ state.                                                                                      |
+  ![image.png](assets/images/image.png)
+  </Tab>
+</Tabs>

@@ -18,78 +18,96 @@
       "to": "#9563FF"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
   "tabs": [
     {
       "name": "API Reference",
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "introduction"
       ]
     },
     {
       "group": "Essentials",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation"
+        "essentials/webhooks"
       ]
     },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/authentication"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
-      ]
-    }
+      {
+        "group": "Payment Methods",
+        "pages": [
+          "api-reference/payment-methods/list-payment-methods-for-a-merchant",
+          "api-reference/payment-methods/list-payment-methods-for-a-customer",
+          "api-reference/payment-methods/list-payment-methods-for-a-customer-1",
+          "api-reference/payment-methods/paymentmethods--create",
+          "api-reference/payment-methods/payment-method--retrieve",
+          "api-reference/payment-methods/payment-method--update",
+          "api-reference/payment-methods/payment-method--delete"
+        ]
+      },
+      {
+        "group": "Customers",
+        "pages": [
+          "api-reference/customers/create-customer",
+          "api-reference/customers/retrieve-customer",
+          "api-reference/customers/update-customer",
+          "api-reference/customers/delete-customer"
+        ]
+      },
+      {
+        "group": "Disputes",
+        "pages": [
+          "api-reference/disputes/disputes--list-disputes",
+          "api-reference/disputes/disputes--retrieve-dispute"
+        ]
+      },
+      {
+        "group": "Mandates",
+        "pages": [
+          "api-reference/mandates/mandates--revoke-mandate",
+          "api-reference/mandates/mandates--retrieve-mandate"
+        ]
+      },
+      {
+        "group": "Payments",
+        "pages": [
+          "api-reference/payments/payments--create",
+          "api-reference/payments/payments--list",
+          "api-reference/payments/payments--session-token",
+          "api-reference/payments/payments--retrieve",
+          "api-reference/payments/payments--update",
+          "api-reference/payments/payments--cancel",
+          "api-reference/payments/payments--capture",
+          "api-reference/payments/payments--confirm"
+        ]
+      },
+      {
+        "group": "Payouts",
+        "pages": [
+          "api-reference/payouts/payouts--create",
+          "api-reference/payouts/payouts--retrieve",
+          "api-reference/payouts/payouts--update",
+          "api-reference/payouts/payouts--cancel",
+          "api-reference/payouts/payouts--fulfill"
+        ]
+      },
+      {
+        "group": "Refunds",
+        "pages": [
+          "api-reference/refunds/refunds--create",
+          "api-reference/refunds/refunds--list",
+          "api-reference/refunds/refunds--retrieve-get",
+          "api-reference/refunds/refunds--update"
+        ]
+      }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "github": "https://github.com/juspay/hyperswitch",
+    "linkedin": "https://www.linkedin.com/company/hyperswitch"
   },
   "openapi": "https://raw.githubusercontent.com/juspay/hyperswitch/main/openapi/openapi_spec.json"
 }
