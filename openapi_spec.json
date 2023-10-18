@@ -1724,7 +1724,7 @@
         "tags": [
           "Refunds"
         ],
-        "summary": "Refunds - Retrieve (GET)",
+        "summary": "Refunds - Retrieve",
         "description": "Refunds - Retrieve (GET)\n\nTo retrieve the properties of a Refund. This may be used to get the status of a previously initiated payment or next action for an ongoing payment",
         "operationId": "Retrieve a Refund",
         "parameters": [

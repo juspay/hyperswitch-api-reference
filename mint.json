@@ -27,83 +27,79 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "Essentials",
+      "pages": ["essentials/webhooks"]
+    },
+    {
+      "group": "Payments",
       "pages": [
-        "essentials/webhooks"
+        "api-reference/payments/payments--create",
+        "api-reference/payments/payments--list",
+        "api-reference/payments/payments--session-token",
+        "api-reference/payments/payments--retrieve",
+        "api-reference/payments/payments--update",
+        "api-reference/payments/payments--cancel",
+        "api-reference/payments/payments--capture",
+        "api-reference/payments/payments--confirm"
       ]
     },
-      {
-        "group": "Payment Methods",
-        "pages": [
-          "api-reference/payment-methods/list-payment-methods-for-a-merchant",
-          "api-reference/payment-methods/list-payment-methods-for-a-customer",
-          "api-reference/payment-methods/list-payment-methods-for-a-customer-1",
-          "api-reference/payment-methods/paymentmethods--create",
-          "api-reference/payment-methods/payment-method--retrieve",
-          "api-reference/payment-methods/payment-method--update",
-          "api-reference/payment-methods/payment-method--delete"
-        ]
-      },
-      {
-        "group": "Customers",
-        "pages": [
-          "api-reference/customers/create-customer",
-          "api-reference/customers/retrieve-customer",
-          "api-reference/customers/update-customer",
-          "api-reference/customers/delete-customer"
-        ]
-      },
-      {
-        "group": "Disputes",
-        "pages": [
-          "api-reference/disputes/disputes--list-disputes",
-          "api-reference/disputes/disputes--retrieve-dispute"
-        ]
-      },
-      {
-        "group": "Mandates",
-        "pages": [
-          "api-reference/mandates/mandates--revoke-mandate",
-          "api-reference/mandates/mandates--retrieve-mandate"
-        ]
-      },
-      {
-        "group": "Payments",
-        "pages": [
-          "api-reference/payments/payments--create",
-          "api-reference/payments/payments--list",
-          "api-reference/payments/payments--session-token",
-          "api-reference/payments/payments--retrieve",
-          "api-reference/payments/payments--update",
-          "api-reference/payments/payments--cancel",
-          "api-reference/payments/payments--capture",
-          "api-reference/payments/payments--confirm"
-        ]
-      },
-      {
-        "group": "Payouts",
-        "pages": [
-          "api-reference/payouts/payouts--create",
-          "api-reference/payouts/payouts--retrieve",
-          "api-reference/payouts/payouts--update",
-          "api-reference/payouts/payouts--cancel",
-          "api-reference/payouts/payouts--fulfill"
-        ]
-      },
-      {
-        "group": "Refunds",
-        "pages": [
-          "api-reference/refunds/refunds--create",
-          "api-reference/refunds/refunds--list",
-          "api-reference/refunds/refunds--retrieve-get",
-          "api-reference/refunds/refunds--update"
-        ]
-      }
+    {
+      "group": "Payment Methods",
+      "pages": [
+        "api-reference/payment-methods/list-payment-methods-for-a-merchant",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer-1",
+        "api-reference/payment-methods/paymentmethods--create",
+        "api-reference/payment-methods/payment-method--retrieve",
+        "api-reference/payment-methods/payment-method--update",
+        "api-reference/payment-methods/payment-method--delete"
+      ]
+    },
+    {
+      "group": "Refunds",
+      "pages": [
+        "api-reference/refunds/refunds--create",
+        "api-reference/refunds/refunds--list",
+        "api-reference/refunds/refunds--retrieve",
+        "api-reference/refunds/refunds--update"
+      ]
+    },
+    {
+      "group": "Customers",
+      "pages": [
+        "api-reference/customers/create-customer",
+        "api-reference/customers/retrieve-customer",
+        "api-reference/customers/update-customer",
+        "api-reference/customers/delete-customer"
+      ]
+    },
+    {
+      "group": "Mandates",
+      "pages": [
+        "api-reference/mandates/mandates--revoke-mandate",
+        "api-reference/mandates/mandates--retrieve-mandate"
+      ]
+    },
+    {
+      "group": "Disputes",
+      "pages": [
+        "api-reference/disputes/disputes--list-disputes",
+        "api-reference/disputes/disputes--retrieve-dispute"
+      ]
+    },
+    {
+      "group": "Payouts",
+      "pages": [
+        "api-reference/payouts/payouts--create",
+        "api-reference/payouts/payouts--retrieve",
+        "api-reference/payouts/payouts--update",
+        "api-reference/payouts/payouts--cancel",
+        "api-reference/payouts/payouts--fulfill"
+      ]
+    }
   ],
   "footerSocials": {
     "github": "https://github.com/juspay/hyperswitch",
