@@ -8,14 +8,10 @@
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#006DF9",
-    "light": "#AE87FF",
-    "dark": "#0D001D",
+    "light": "#006DF9",
+    "dark": "#006DF9",
     "background": {
-      "dark": "#151A1F"
-    },
-    "anchors": {
-      "from": "#FF7F57",
-      "to": "#9563FF"
+      "dark": "#242F48"
     }
   },
   "tabs": [
@@ -31,7 +27,12 @@
     },
     {
       "group": "Essentials",
-      "pages": ["essentials/webhooks", "essentials/error_codes", "essentials/rate_limit", "essentials/go-live"]
+      "pages": [
+        "essentials/webhooks",
+        "essentials/error_codes",
+        "essentials/rate_limit",
+        "essentials/go-live"
+      ]
     },
     {
       "group": "Payments",
@@ -79,9 +80,7 @@
     },
     {
       "group": "Customers List",
-      "pages": [
-        "api-reference/customers-list/list-customers-for-a-merchant"
-      ]
+      "pages": ["api-reference/customers-list/list-customers-for-a-merchant"]
     },
     {
       "group": "Mandates",
@@ -109,9 +108,7 @@
     },
     {
       "group": "Schemas",
-      "pages": [
-        "api-reference/schemas/outgoing--webhook"
-      ]
+      "pages": ["api-reference/schemas/outgoing--webhook"]
     }
   ],
   "footerSocials": {
