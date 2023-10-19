@@ -43,7 +43,8 @@
         "api-reference/payments/payments--update",
         "api-reference/payments/payments--cancel",
         "api-reference/payments/payments--capture",
-        "api-reference/payments/payments--confirm"
+        "api-reference/payments/payments--confirm",
+        "api-reference/payments/payments-link--retrieve"
       ]
     },
     {
@@ -74,6 +75,12 @@
         "api-reference/customers/retrieve-customer",
         "api-reference/customers/update-customer",
         "api-reference/customers/delete-customer"
+      ]
+    },
+    {
+      "group": "Customers List",
+      "pages": [
+        "api-reference/customers-list/list-customers-for-a-merchant"
       ]
     },
     {
