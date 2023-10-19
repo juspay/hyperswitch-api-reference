@@ -99,6 +99,12 @@
         "api-reference/payouts/payouts--cancel",
         "api-reference/payouts/payouts--fulfill"
       ]
+    },
+    {
+      "group": "Schemas",
+      "pages": [
+        "api-reference/schemas/outgoing--webhook"
+      ]
     }
   ],
   "footerSocials": {
