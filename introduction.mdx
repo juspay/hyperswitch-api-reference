@@ -18,7 +18,7 @@ Use the following base URLs when making requests to the APIs:
 | Sandbox     | https://sandbox.hyperswitch.io |
 | Production  | https://api.hyperswitch.io     |
 
-> Note: If you **do not hold a PCI certification** to collect and store card data on your servers, we recommend using [**Unified Checkout**](https://hyperswitch.io/docs/sdkIntegrations/unifiedCheckoutWeb/#unified-checkout) to accept card information from users.
+<Note> If you **do not hold a PCI certification** to collect and store card data on your servers, we recommend using [**Unified Checkout**](https://hyperswitch.io/docs/sdkIntegrations/unifiedCheckoutWeb/#unified-checkout) to accept card information from users. </Note>
 
 ## Authentication and API keys
 
@@ -29,27 +29,30 @@ Hyperswitch authenticates your API requests using your account’s API keys. Eac
 | Secret key (API-key) | `snd_c69***`    | Used to authenticate API requests from your merchant server. **Don’t expose this key** on a website or embed it in a mobile application. |
 | Publishable key      | `pk_snd_3b3***` | Used to authenticate API requests from your app’s client. Can be publicly-accessible in your web or mobile app’s client-side code.       |
 
-> **Quick Links**
->
-> - Get your [API key](https://app.hyperswitch.io/developers?tabIndex=1) and [Publishable Key](https://app.hyperswitch.io/home)
-> - [Postman Collection](https://www.postman.com/hyperswitch/workspace/hyperswitch-development/collection/25176162-630b5353-7002-44d1-8ba1-ead6c230f2e3)
+<Check>
+Get your [API key](https://app.hyperswitch.io/developers?tabIndex=1) and [Publishable Key](https://app.hyperswitch.io/home)
+</Check>
+<Check>
+[Postman Collection](https://www.postman.com/hyperswitch/workspace/hyperswitch-development/collection/25176162-630b5353-7002-44d1-8ba1-ead6c230f2e3)
+</Check>
 
 <Tabs>
   <Tab title="Endpoints and Schema">
     Hyperswitch’s Payments API is a comprehensive, robust API that could take care of various complex global payments scenarios. Find below an overview of our API endpoints and schema:
     | API              | Endpoints                                                            |
     | ---------------- | -------------------------------------------------------------------- |
-    | **Payments**     | `/payments`, `/payments/{payment_id}/confirm`, and more.           |
-    | **Mandates**     | `/mandates/{mandate_id}`, `/mandates/revoke/{mandate_id}`.         |
-    | **Refunds**      | `/refunds`, `/refunds/{refund_id}` (retrieve).                    |
-    | **Customers**    | `/customers`, `/customers/{customer_id}` (retrieve and update).    |
-    | **Payment Methods** | `/payment_methods`, `/payment_methods/{method_id}` (update and delete). |
-    | **Disputes**     | `/disputes/{dispute_id}` (retrieve).                                |
+    | **Payments**     | `/payments`, `/payments/{payment_id}/confirm`, `/payments/{payment_id}/capture`, `/payments/{payment_id}/update`|
+    | **Mandates**     | `/mandates/{mandate_id}`, `/mandates/revoke/{mandate_id}`        |
+    | **Refunds**      | `/refunds`, `/refunds/{refund_id}` (retrieve)                    |
+    | **Customers**    | `/customers`, `/customers/{customer_id}` (retrieve, update and delete)   |
+    | **Payment Methods** | `/payment_methods`, `/payment_methods/{method_id}` (update and delete) |
+    | **Disputes**     | `/disputes/{dispute_id}` (retrieve)                                |
+<Info>
+ Payments API essentially requires only two steps to process a payment through Hyperswitch:
 
-    > Payments API essentially requires only two steps to process a payment through Hyperswitch:
->
-> 1. [Create a payment](https://api-reference.hyperswitch.io/docs/hyperswitch-api-reference/e1a81db94434f-payments-create).
-> 2. [Confirm a payment](https://api-reference.hyperswitch.io/docs/hyperswitch-api-reference/871e78d3875ed-payments-confirm).
+ 1. [Create a payment](https://juspay-78.mintlify.app/api-reference/payments/payments--create).
+ 2. [Confirm a payment](https://juspay-78.mintlify.app/api-reference/payments/payments--confirm).
+</Info>
   </Tab>
   <Tab title="Payment Status Lifecycle">
     Hyperswitch handles the complex functionality of a comprehensive payments flow through the Payments object that transitions through multiple states during its payments lifecycle. Given below are the various statuses a payment can have:
@@ -64,6 +67,6 @@ Hyperswitch authenticates your API requests using your account’s API keys. Eac
 | succeeded                | The payments object reaches success state post confirmation of successful processing from the payment processor.                                                                                            |
 | failed                   | The payments object transitions to a failed state when the payment processor confirms the processing failure.                                                                                               |
 | expired                  | You can expire the payments object while it is in any state except when it is under ‘processing’ or ‘succeeded’ state.                                                                                      |
-  ![image.png](assets/images/image.png)
+  <img src="assets/images/image.png" />
   </Tab>
 </Tabs>

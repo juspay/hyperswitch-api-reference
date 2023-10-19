@@ -7,10 +7,11 @@ Webhooks are HTTP-based real-time push notifications that Hyperswitch would use 
 - Providing the best payment experience for the end-user by instantly communicating payment status and fulfilling the purchase.
 
 ## Configuring Webhooks
-
-- **Create an endpoint on your server:** You would need to set up a dedicated HTTPS or HTTP endpoint on your server with a URL as a webhook listener that will receive push notifications in the form of a POST request with JSON payload from the Hyperswitch server.
-- **Update your webhook endpoint on Hyperswitch Dashboard:** Update the above endpoint on your Hyperswitch dashboard under Settings -> Webhooks.
-- **Update Hyperswitch’s webhook endpoints on your connector Dashboard**: In order for Hyperswitch to receive updates from the connectors you have selected, you would need to update Hyperswitch’s corresponding endpoints on your respective connector dashboard instead of your webhook endpoints.
+<Steps>
+<Step title="Create an endpoint on your server">You would need to set up a dedicated HTTPS or HTTP endpoint on your server with a URL as a webhook listener that will receive push notifications in the form of a POST request with JSON payload from the Hyperswitch server</Step>
+<Step title="Update your webhook endpoint on Hyperswitch Dashboard"> Update the above endpoint on your Hyperswitch dashboard under Settings -> Webhooks</Step>
+<Step title= "Update Hyperswitch’s webhook endpoints on your connector Dashboard">In order for Hyperswitch to receive updates from the connectors you have selected, you would need to update Hyperswitch’s corresponding endpoints on your respective connector dashboard instead of your webhook endpoints</Step>
+</Steps>
 
 Hyperswitch’s webhook endpoint format is as follows:
 
@@ -23,21 +24,21 @@ Hyperswitch’s webhook endpoint format is as follows:
 
 - **Select the events for Webhooks:** On the same page on the dashboard, select the events for which you would like to receive notifications. Currently, Webhooks are available on Hyperswitch for the following events:
 
-    - payment_succeeded
-    - payment_failed
-    - payment_processing
-    - action_required
-    - refund_succeeded
-    - refund_failed
-    - dispute_opened
-    - dispute_expired
-    - dispute_accepted
-    - dispute_cancelled
-    - dispute_challenged
-    - dispute_won
-    - dispute_lost
+    1. payment_succeeded
+    2. payment_failed
+    3. payment_processing
+    4. action_required
+    5. refund_succeeded
+    6. refund_failed
+    7. dispute_opened
+    8. dispute_expired
+    9. dispute_accepted
+    10. dispute_cancelled
+    11. dispute_challenged
+    12. dispute_won
+    13. dispute_lost
 
-> Click [**here**](https://api-reference.hyperswitch.io/docs/hyperswitch-api-reference/febe7408d8cf6-outgoing-webhook) to see the webhook payload your endpoint would need to parse for each of the above events.
+<Info>Click [**here**](https://api-reference.hyperswitch.io/docs/hyperswitch-api-reference/febe7408d8cf6-outgoing-webhook) to see the webhook payload your endpoint would need to parse for each of the above events</Info>
 
 - **Return a 2xx response:** Your server must return a successful 2xx response on successful receipt of webhooks.
 
