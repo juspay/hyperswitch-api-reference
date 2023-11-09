@@ -251,6 +251,7 @@ components:
       type: string
       # summary: Response after setting key1
       description: Received Key1
+      example: Received Key1
     Key2Set:
       type: string
       # description: Response after setting key2
