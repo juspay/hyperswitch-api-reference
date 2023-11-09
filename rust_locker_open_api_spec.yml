@@ -255,14 +255,17 @@ components:
       type: string
       # description: Response after setting key2
       description: Received Key2
+      example: Received Key2
     Decrypt200:
       type: string
       # description: Response if the locker key custodian decryption was successful
       description: Decryption successful
+      example: Decryption successful
     Health:
       type: string
       # description: Response when the health is good
       description: health is good
+      example: health is good
     StoreDataRes:
       type: object
       description: Response received if the data was stored successfully
