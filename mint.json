@@ -101,6 +101,15 @@
       ]
     },
     {
+      "group": "Gsm",
+      "pages": [
+        "api-reference/gsm/gsm--create",
+        "api-reference/gsm/gsm--delete",
+        "api-reference/gsm/gsm--get",
+        "api-reference/gsm/gsm--update"
+      ]
+    },
+    {
       "group": "Payouts",
       "pages": [
         "api-reference/payouts/payouts--create",
