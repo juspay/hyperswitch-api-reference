@@ -116,6 +116,28 @@
       ]
     },
     {
+      "group": "Locker - Health",
+      "pages": [
+        "api-reference/get-health"
+      ]
+    },
+    {
+      "group": "Locker - Key Custodian",
+      "pages": [
+        "api-reference/key-custodian/provide-key-1",
+        "api-reference/key-custodian/provide-key-2",
+        "api-reference/key-custodian/unlock-the-locker"
+      ]
+    },
+    {
+      "group": "Locker - Cards",
+      "pages": [
+        "api-reference/cards/add-data-in-locker",
+        "api-reference/cards/delete-data-from-locker",
+        "api-reference/cards/retrieve-data-from-locker"
+      ]
+    },
+    {
       "group": "Schemas",
       "pages": ["api-reference/schemas/outgoing--webhook"]
     }
@@ -124,5 +146,5 @@
     "github": "https://github.com/juspay/hyperswitch",
     "linkedin": "https://www.linkedin.com/company/hyperswitch"
   },
-  "openapi": ["openapi_spec.json"]
+  "openapi": ["openapi_spec.json", "rust_locker_open_api_spec.yml"]
 }
