@@ -118,7 +118,7 @@
     {
       "group": "Locker - Health",
       "pages": [
-        "api-reference/get-health"
+        "api-reference/locker-health/get-health"
       ]
     },
     {
