@@ -49,6 +49,16 @@
       ]
     },
     {
+      "group": "Merchant Connector Account",
+      "pages": [
+        "api-reference/merchant-connector-account/paymentsconnectors--create",
+        "api-reference/merchant-connector-account/merchant-connector--retrieve",
+        "api-reference/merchant-connector-account/merchant-connector--update",
+        "api-reference/merchant-connector-account/merchant-connector--delete",
+        "api-reference/merchant-connector-account/merchant-connector--list"
+      ]
+    },
+    {
       "group": "Payment Methods",
       "pages": [
         "api-reference/payment-methods/list-payment-methods-for-a-merchant",
