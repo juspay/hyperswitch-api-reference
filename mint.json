@@ -51,7 +51,7 @@
     {
       "group": "Merchant Connector Account",
       "pages": [
-        "api-reference/merchant-connector-account/paymentsconnectors--create",
+        "api-reference/merchant-connector-account/merchant-connector--create",
         "api-reference/merchant-connector-account/merchant-connector--retrieve",
         "api-reference/merchant-connector-account/merchant-connector--update",
         "api-reference/merchant-connector-account/merchant-connector--delete",
