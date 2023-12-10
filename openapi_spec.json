@@ -1647,21 +1647,13 @@
                 "$ref": "#/components/schemas/PaymentsCreateRequest"
               },
               "examples": {
-                "Create a 3DS payment": {
+                "Create a payment with minimal fields": {
                   "value": {
                     "amount": 6540,
-                    "currency": "USD",
-                    "authentication_type": "three_ds"
+                    "currency": "USD"
                   }
                 },
-                "Create a manual capture payment": {
-                  "value": {
-                    "amount": 6540,
-                    "currency": "USD",
-                    "capture_method": "manual"
-                  }
-                },
-                "Create a payment": {
+                "Create a payment with customer details and metadata": {
                   "value": {
                     "amount": 6540,
                     "currency": "USD",
@@ -1679,6 +1671,20 @@
                       "udf1": "some-value",
                       "udf2": "some-value"
                     }
+                  }
+                },
+                "Create a 3DS payment": {
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "authentication_type": "three_ds"
+                  }
+                },
+                "Create a manual capture payment": {
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "capture_method": "manual"
                   }
                 },
                 "Create a payment with address": {
@@ -1703,35 +1709,6 @@
                       "phone": {
                         "number": "8056594427",
                         "country_code": "+91"
-                      }
-                    }
-                  }
-                },
-                "Create a payment with customer details": {
-                  "value": {
-                    "amount": 6540,
-                    "currency": "USD",
-                    "customer": {
-                      "id": "cus_abcdefgh",
-                      "name": "John Dough",
-                      "phone": "9999999999",
-                      "email": "john@example.com"
-                    }
-                  }
-                },
-                "Create a payment with minimul fields": {
-                  "value": {
-                    "amount": 6540,
-                    "currency": "USD"
-                  }
-                },
-                "Create a payment with order category for noon": {
-                  "value": {
-                    "amount": 6540,
-                    "currency": "USD",
-                    "connector_metadata": {
-                      "noon": {
-                        "order_category": "shoes"
                       }
                     }
                   }
