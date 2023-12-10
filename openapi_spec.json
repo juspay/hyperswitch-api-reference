@@ -1816,6 +1816,14 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PaymentsResponse"
+                },
+                "examples": {
+                  "Create a payment with minimal fields": {
+                    "value": {
+                      "amount": 6540,
+                      "currency": "USD"
+                    }
+                  }
                 }
               }
             }
