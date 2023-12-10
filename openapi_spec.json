@@ -1638,7 +1638,7 @@
           "Payments"
         ],
         "summary": "Payments - Create",
-        "description": "**Creates a payment object when amount and currency are passed.** This API is also used to create a mandate by passing the mandate_object.\n\nTo completely process a payment you will have to create a payment, attach a payment method, confirm and capture funds.\n\nDepending on the user journey you wish to achieve, you may opt to complete all the steps in a single request by attaching a payment method, setting `confirm=true` and `capture_method = automatic` in the *Payments/Create API* request or you could use the following sequence of API requests to achieve the same:\n\n 1. Payments - Create\n\n2. Payments - Update\n\n3. Payments - Confirm\n\n4. Payments - Capture.\n\nUse the client secret returned in this API along with your publishable key to make subsequent API calls from your client",
+        "description": "**Creates a payment object when amount and currency are passed.** This API is also used to create a mandate by passing the `mandate_object`.\n\nTo completely process a payment you will have to create a payment, attach a payment method, confirm and capture funds.\n\nDepending on the user journey you wish to achieve, you may opt to complete all the steps in a single request by attaching a payment method, setting `confirm=true` and `capture_method = automatic` in the *Payments/Create API* request or you could use the following sequence of API requests to achieve the same:\n\n 1. Payments - Create\n\n2. Payments - Update\n\n3. Payments - Confirm\n\n4. Payments - Capture.\n\nUse the client secret returned in this API along with your publishable key to make subsequent API calls from your client",
         "operationId": "Create a Payment",
         "requestBody": {
           "content": {
@@ -2003,7 +2003,7 @@
           "Payments"
         ],
         "summary": "Payments - Retrieve",
-        "description": "Retrieve a Payment. This API can also be used to get the status of a previously initiated payment or next action for an ongoing payment",
+        "description": "Retrieves a Payment. This API can also be used to get the status of a previously initiated payment or next action for an ongoing payment",
         "operationId": "Retrieve a Payment",
         "parameters": [
           {
@@ -2055,7 +2055,7 @@
           "Payments"
         ],
         "summary": "Payments - Update",
-        "description": "Updates a Payment. Use this API to attach a payment method and metadata fields after the Payment is created. Amount, currency and customer_id cannot be updated using client secret and publishable key auth due to security reasons.",
+        "description": "Updates a Payment. Use this API to attach a payment method and metadata fields after the Payment is created. `amount`, `currency` and `customer_id` cannot be updated using `client secret` and `publishable_key` auth due to security reasons.",
         "operationId": "Update a Payment",
         "parameters": [
           {
@@ -2109,7 +2109,7 @@
           "Payments"
         ],
         "summary": "Payments - Cancel",
-        "description": "A Payment could can be cancelled when it is in one of these statuses: requires_payment_method, requires_capture, requires_confirmation, requires_customer_action.",
+        "description": "A Payment could can be cancelled when it is in one of these statuses: `requires_payment_method`, `requires_capture`, `requires_confirmation`, `requires_customer_action`.",
         "operationId": "Cancel a Payment",
         "parameters": [
           {
@@ -2153,7 +2153,7 @@
           "Payments"
         ],
         "summary": "Payments - Capture",
-        "description": "Captures the funds for an uncaptured payment. Use this API to capture funds when you had opted for separate Auth and Capture during payments creation by setting capture_method=manual or capture_method=manual_multiple. Uncaptured payments are usually cancelled by the connectors after 7-30 days.",
+        "description": "Captures the funds for an uncaptured payment. Use this API to capture funds when you had opted for separate Auth and Capture during payments creation by setting `capture_method=manual` or `capture_method=manual_multiple`.\n\nUncaptured payments are usually cancelled by the connectors after 7-30 days.",
         "operationId": "Capture a Payment",
         "parameters": [
           {
@@ -2204,7 +2204,7 @@
           "Payments"
         ],
         "summary": "Payments - Confirm",
-        "description": "Use this API to confirm the payment and forward the payment to the payment processor. Alternatively you can confirm the payment within the Payments Create API by setting confirm=true. After confirmation, the payment could either i) fail with 'failed' status or ii) transition to a 'requires_customer_action' status with a 'next_action' block or iii) succeed with either 'succeeded' in case of automatic capture or 'requires_capture' in case of manual capture",
+        "description": "**Use this API to confirm the payment and forward the payment to the payment processor.**\n\nAlternatively you can confirm the payment within the *Payments/Create* API by setting `confirm=true`. After confirmation, the payment could either:\n\n1. fail with `failed` status or\n\n2. transition to a `requires_customer_action` status with a `next_action` block or\n\n3. succeed with either `succeeded` in case of automatic capture or `requires_capture` in case of manual capture",
         "operationId": "Confirm a Payment",
         "parameters": [
           {
