@@ -9528,13 +9528,6 @@
             "maxLength": 30,
             "minLength": 30
           },
-          "merchant_id": {
-            "type": "string",
-            "description": "This is an identifier for the merchant account. This is inferred from the API key\nprovided during the request",
-            "example": "merchant_1668273825",
-            "nullable": true,
-            "maxLength": 255
-          },
           "amount": {
             "type": "integer",
             "format": "int64",
@@ -9877,13 +9870,6 @@
             "nullable": true,
             "maxLength": 30,
             "minLength": 30
-          },
-          "merchant_id": {
-            "type": "string",
-            "description": "This is an identifier for the merchant account. This is inferred from the API key\nprovided during the request",
-            "example": "merchant_1668273825",
-            "nullable": true,
-            "maxLength": 255
           },
           "amount": {
             "type": "integer",
