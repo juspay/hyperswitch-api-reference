@@ -698,7 +698,7 @@
     "/customers/list": {
       "post": {
         "tags": [
-          "Customers List"
+          "Customers"
         ],
         "summary": "List customers for a merchant",
         "description": "Lists all the customers for a particular merchant id",
@@ -733,8 +733,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "summary": "List payment methods for a Customer",
-        "description": "Lists all the applicable payment methods for a particular Customer ID",
+        "summary": "List payment methods for a Payment",
+        "description": "Lists all the applicable payment methods for a particular payment tied to the `client_secret`",
         "operationId": "List all Payment Methods for a Customer",
         "parameters": [
           {
@@ -1949,8 +1949,7 @@
                   "Create a payment with minimal fields": {
                     "value": {
                       "amount": 6540,
-                      "currency": "USD",
-                      "abc": "ac"
+                      "currency": "USD"
                     }
                   }
                 }
@@ -2882,6 +2881,7 @@
               "type",
               "list"
             ],
+            "description": "Object to filter the customer countries for which the payment method is displayed",
             "properties": {
               "type": {
                 "type": "string",
@@ -2950,6 +2950,7 @@
               "type",
               "list"
             ],
+            "description": "Object to filter the currencies for which the payment method is displayed",
             "properties": {
               "type": {
                 "type": "string",
@@ -4864,6 +4865,7 @@
       },
       "CardNetwork": {
         "type": "string",
+        "description": "Indicates the card network",
         "enum": [
           "Visa",
           "Mastercard",
@@ -4949,6 +4951,7 @@
       },
       "Connector": {
         "type": "string",
+        "description": "Indicates the name of the connector",
         "enum": [
           "phonypay",
           "fauxpay",
@@ -5048,6 +5051,7 @@
       },
       "ConnectorType": {
         "type": "string",
+        "description": "Indicates the type of connector - payments, payouts, frm, etc",
         "enum": [
           "payment_processor",
           "payment_vas",
@@ -7807,8 +7811,7 @@
         "description": "Create a new Merchant Connector for the merchant account. The connector could be a payment processor / facilitator / acquirer or specialized services like Fraud / Accounting etc.\"",
         "required": [
           "connector_type",
-          "connector_name",
-          "status"
+          "connector_name"
         ],
         "properties": {
           "connector_type": {
@@ -7819,19 +7822,17 @@
           },
           "connector_label": {
             "type": "string",
-            "description": "Connector label for a connector, this can serve as a field to identify the connector as per business details",
+            "description": "A unique label to identify the connector account created under a business profile",
             "example": "stripe_US_travel",
-            "nullable": true
-          },
-          "merchant_connector_id": {
-            "type": "string",
-            "description": "Unique ID of the connector",
-            "example": "mca_5apGeP94tMts6rg3U3kR",
             "nullable": true
           },
           "connector_account_details": {
             "type": "object",
-            "description": "Account details of the Connector. You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Useful for storing additional, structured information on an object.",
+            "description": "An object containing all the required details for a Connector account.",
+            "example": {
+              "auth_type": "HeaderKey",
+              "api_key": "{{stripe-api-key}}"
+            },
             "nullable": true
           },
           "test_mode": {
@@ -7853,7 +7854,7 @@
             "items": {
               "$ref": "#/components/schemas/PaymentMethodsEnabled"
             },
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
+            "description": "An object containing the details about the payment methods that need to be enabled under this merchant connector account",
             "example": [
               {
                 "payment_method": "wallet",
@@ -7902,7 +7903,7 @@
             "items": {
               "$ref": "#/components/schemas/FrmConfigs"
             },
-            "description": "contains the frm configs for the merchant connector",
+            "description": "Contains the frm configs for the merchant connector",
             "example": "\n[{\"gateway\":\"stripe\",\"payment_methods\":[{\"payment_method\":\"card\",\"payment_method_types\":[{\"payment_method_type\":\"credit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\",\"action\":\"cancel_txn\"},{\"payment_method_type\":\"debit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\"}]}]}]\n",
             "nullable": true
           },
@@ -7912,15 +7913,17 @@
                 "$ref": "#/components/schemas/CountryAlpha2"
               }
             ],
+            "description": "The business country to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
             "nullable": true
           },
           "business_label": {
             "type": "string",
+            "description": "The business label to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
             "nullable": true
           },
           "business_sub_label": {
             "type": "string",
-            "description": "Business Sub label of the merchant",
+            "description": "The business sublabel to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
             "example": "chase",
             "nullable": true
           },
@@ -8286,6 +8289,7 @@
           "merchant_secret",
           "additional_secret"
         ],
+        "description": "Webhook details related to the connector account",
         "properties": {
           "merchant_secret": {
             "type": "string",
@@ -9349,7 +9353,7 @@
           "voucher",
           "gift_card"
         ],
-        "description": "Used by the SDK to indicate the payment method that the customer wants to use to pay"
+        "description": "Indicates the type of payment method"
       },
       "PaymentMethodCreate": {
         "type": "object",
@@ -9821,7 +9825,7 @@
           "seicomart",
           "pay_easy"
         ],
-        "description": "Used by the SDK to indicate the sub type of payment method that the customer wants to use to pay"
+        "description": "Indicates the sub type of payment method"
       },
       "PaymentMethodUpdate": {
         "type": "object",
@@ -9864,7 +9868,7 @@
             "items": {
               "$ref": "#/components/schemas/RequestPaymentMethodTypes"
             },
-            "description": "Subtype of payment method",
+            "description": "Object containing details about the subtype of payment method and relevant configs",
             "example": [
               "credit"
             ],
@@ -11735,6 +11739,7 @@
       },
       "PrimaryBusinessDetails": {
         "type": "object",
+        "description": "Details about the primary business unit of the merchant account",
         "required": [
           "country",
           "business"
@@ -12080,6 +12085,7 @@
           },
           "card_networks": {
             "type": "array",
+            "description": "Indicates the card network",
             "items": {
               "$ref": "#/components/schemas/CardNetwork"
             },
@@ -12104,14 +12110,14 @@
           "minimum_amount": {
             "type": "integer",
             "format": "int32",
-            "description": "Minimum amount supported by the processor. To be represented in the lowest denomination of the target currency (For example, for USD it should be in cents)",
+            "description": "Minimum amount for which the payment method can be displayed. To be represented in the lowest denomination of the target currency (For example, for USD it should be in cents)",
             "example": 1,
             "nullable": true
           },
           "maximum_amount": {
             "type": "integer",
             "format": "int32",
-            "description": "Maximum amount supported by the processor. To be represented in the lowest denomination of\nthe target currency (For example, for USD it should be in cents)",
+            "description": "Minimum amount for which the payment method can be displayed. To be represented in the lowest denomination of\nthe target currency (For example, for USD it should be in cents)",
             "example": 1313,
             "nullable": true
           },
@@ -13280,7 +13286,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "api-key",
-        "description": "Use a publishable key here and pass the client_secret in the body. Publishable keys are a type of secret keys that can be public and embedded in your client and app side code. Use it in conjunction with client_secret to make API requests from your client"
+        "description": "Use a publishable key created under your merchant account from the HyperSwitch dashboard here and also pass the client_secret. Publishable keys are a type of secret keys that can be public and embedded in your client and app side code. Use it in conjunction with client_secret to make API requests from your client"
       }
     }
   },
