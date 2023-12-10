@@ -129,6 +129,175 @@
         ]
       }
     },
+    "/accounts": {
+      "post": {
+        "tags": [
+          "Merchant Account"
+        ],
+        "summary": "Merchant Account - Create",
+        "description": "Merchant Account - Create\n\nCreate a new account for a merchant and the merchant could be a seller or retailer or client who likes to receive and send payments.",
+        "operationId": "Create a Merchant Account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantAccountCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Merchant Account Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MerchantAccountResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid data"
+          }
+        },
+        "security": [
+          {
+            "admin_api_key": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}": {
+      "get": {
+        "tags": [
+          "Merchant Account"
+        ],
+        "summary": "Merchant Account - Retrieve",
+        "description": "Merchant Account - Retrieve\n\nRetrieve a merchant account details.",
+        "operationId": "Retrieve a Merchant Account",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The unique identifier for the merchant account",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Merchant Account Retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MerchantAccountResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Merchant account not found"
+          }
+        },
+        "security": [
+          {
+            "admin_api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Merchant Account"
+        ],
+        "summary": "Merchant Account - Update",
+        "description": "Merchant Account - Update\n\nTo update an existing merchant account. Helpful in updating merchant details such as email, contact details, or other configuration details like webhook, routing algorithm etc",
+        "operationId": "Update a Merchant Account",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The unique identifier for the merchant account",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MerchantAccountUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Merchant Account Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MerchantAccountResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Merchant account not found"
+          }
+        },
+        "security": [
+          {
+            "admin_api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Merchant Account"
+        ],
+        "summary": "Merchant Account - Delete",
+        "description": "Merchant Account - Delete\n\nTo delete a merchant account",
+        "operationId": "Delete a Merchant Account",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "description": "The unique identifier for the merchant account",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Merchant Account Deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MerchantAccountDeleteResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Merchant account not found"
+          }
+        },
+        "security": [
+          {
+            "admin_api_key": []
+          }
+        ]
+      }
+    },
     "/accounts/{account_id}/connectors": {
       "get": {
         "tags": [

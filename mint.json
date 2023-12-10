@@ -49,6 +49,15 @@
       ]
     },
     {
+      "group": "Merchant Account",
+      "pages": [
+        "api-reference/merchant-account/merchant-account--create",
+        "api-reference/merchant-account/merchant-account--retrieve",
+        "api-reference/merchant-account/merchant-account--update",
+        "api-reference/merchant-account/merchant-account--delete"
+      ]
+    },
+    {
       "group": "Merchant Connector Account",
       "pages": [
         "api-reference/merchant-connector-account/merchant-connector--create",
