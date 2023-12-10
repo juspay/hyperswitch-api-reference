@@ -404,20 +404,22 @@
                 "Create a merchant connector account with minimal fields": {
                   "value": {
                     "connector_type": "fiz_operations",
-                    "connector_name": "stripe",
+                    "connector_name": "adyen",
                     "connector_account_details": {
-                      "auth_type": "HeaderKey",
-                      "api_key": "{{stripe-api-key}}"
+                      "auth_type": "BodyKey",
+                      "api_key": "{{adyen-api-key}}",
+                      "key1": "{{adyen_merchant_account}}"
                     }
                   }
                 },
                 "Create a merchant connector account under a specific business profile": {
                   "value": {
                     "connector_type": "fiz_operations",
-                    "connector_name": "stripe",
+                    "connector_name": "adyen",
                     "connector_account_details": {
-                      "auth_type": "HeaderKey",
-                      "api_key": "{{stripe-api-key}}"
+                      "auth_type": "BodyKey",
+                      "api_key": "{{adyen-api-key}}",
+                      "key1": "{{adyen_merchant_account}}"
                     },
                     "profile_id": "{{profile_id}}"
                   }
@@ -425,11 +427,12 @@
                 "Create a merchant account with custom connector label": {
                   "value": {
                     "connector_type": "fiz_operations",
-                    "connector_name": "stripe",
-                    "connector_label": "EU_stripe",
+                    "connector_name": "adyen",
+                    "connector_label": "EU_adyen",
                     "connector_account_details": {
-                      "auth_type": "HeaderKey",
-                      "api_key": "{{stripe-api-key}}"
+                      "auth_type": "BodyKey",
+                      "api_key": "{{adyen-api-key}}",
+                      "key1": "{{adyen_merchant_account}}"
                     }
                   }
                 }
@@ -7303,10 +7306,6 @@
       },
       "MandateRevokedResponse": {
         "type": "object",
-        "required": [
-          "mandate_id",
-          "status"
-        ],
         "properties": {
           "mandate_id": {
             "type": "string",
@@ -7407,6 +7406,14 @@
             ],
             "nullable": true
           },
+          "primary_business_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PrimaryBusinessDetails"
+              }
+            ],
+            "nullable": true
+          },
           "return_url": {
             "type": "string",
             "description": "The URL to redirect after the completion of the operation",
@@ -7418,14 +7425,6 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/WebhookDetails"
-              }
-            ],
-            "nullable": true
-          },
-          "primary_business_details": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PrimaryBusinessDetails"
               }
             ],
             "nullable": true
@@ -7534,32 +7533,6 @@
             "example": "NewAge Retailer",
             "nullable": true
           },
-          "return_url": {
-            "type": "string",
-            "description": "The URL to redirect after the completion of the operation",
-            "example": "https://www.example.com/success",
-            "nullable": true,
-            "maxLength": 255
-          },
-          "enable_payment_response_hash": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if payment response hash needs to be enabled",
-            "default": false,
-            "example": true
-          },
-          "payment_response_hash_key": {
-            "type": "string",
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
-            "example": "xkkdf909012sdjki2dkh5sdf",
-            "nullable": true,
-            "maxLength": 255
-          },
-          "redirect_to_merchant_with_http_post": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if redirect to merchant with http post needs to be enabled",
-            "default": false,
-            "example": true
-          },
           "merchant_details": {
             "allOf": [
               {
@@ -7568,12 +7541,57 @@
             ],
             "nullable": true
           },
+          "primary_business_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PrimaryBusinessDetails"
+              }
+            ],
+            "nullable": true
+          },
+          "return_url": {
+            "type": "string",
+            "description": "The URL to redirect after the completion of the operation",
+            "example": "https://www.example.com/success",
+            "nullable": true,
+            "maxLength": 255
+          },
           "webhook_details": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/WebhookDetails"
               }
             ],
+            "nullable": true
+          },
+          "enable_payment_response_hash": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if payment response hash needs to be enabled",
+            "default": false,
+            "example": true,
+            "nullable": true
+          },
+          "payment_response_hash_key": {
+            "type": "string",
+            "description": "Refers to the hash key used for calculating the signature for webhooks and redirect response\nIf the value is not provided, a default value is used",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
+            "nullable": true
+          },
+          "locker_id": {
+            "type": "string",
+            "description": "An identifier for the vault used to store payment method information.",
+            "example": "locker_abc123",
+            "nullable": true
+          },
+          "redirect_to_merchant_with_http_post": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if redirect to merchant with http post needs to be enabled",
+            "default": false,
+            "example": true,
             "nullable": true
           },
           "routing_algorithm": {
@@ -7592,74 +7610,18 @@
             ],
             "nullable": true
           },
-          "sub_merchants_enabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the merchant is a sub-merchant under a master or a parent merchant. By default, its value is false.",
-            "default": false,
-            "example": false,
-            "nullable": true
-          },
-          "parent_merchant_id": {
-            "type": "string",
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
-            "example": "xkkdf909012sdjki2dkh5sdf",
-            "nullable": true,
-            "maxLength": 255
-          },
-          "publishable_key": {
-            "type": "string",
-            "description": "API key that will be used for server side API access",
-            "example": "AH3423bkjbkjdsfbkj",
-            "nullable": true
-          },
-          "metadata": {
-            "type": "object",
-            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
-            "nullable": true
-          },
-          "locker_id": {
-            "type": "string",
-            "description": "An identifier for the vault used to store payment method information.",
-            "example": "locker_abc123",
-            "nullable": true
-          },
-          "primary_business_details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PrimaryBusinessDetails"
-            },
-            "description": "Default business details for connector routing"
-          },
           "frm_routing_algorithm": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
-              }
-            ],
+            "type": "object",
+            "description": "The frm routing algorithm to be used for routing payments to desired FRM's",
             "nullable": true
           },
           "intent_fulfillment_time": {
             "type": "integer",
-            "format": "int64",
+            "format": "int32",
             "description": "Will be used to expire client secret after certain amount of time to be supplied in seconds\n(900) for 15 mins",
-            "nullable": true
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "The organization id merchant is associated with"
-          },
-          "is_recon_enabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the merchant has recon service is enabled or not, by default value is false"
-          },
-          "default_profile": {
-            "type": "string",
-            "description": "The default business profile that will be used for creating merchant connector accounts and payments",
+            "example": 900,
             "nullable": true,
-            "maxLength": 64
-          },
-          "recon_status": {
-            "$ref": "#/components/schemas/ReconStatus"
+            "minimum": 0
           },
           "payment_link_config": {
             "allOf": [
@@ -7697,6 +7659,14 @@
             ],
             "nullable": true
           },
+          "primary_business_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PrimaryBusinessDetails"
+              }
+            ],
+            "nullable": true
+          },
           "return_url": {
             "type": "string",
             "description": "The URL to redirect after the completion of the operation",
@@ -7712,33 +7682,6 @@
             ],
             "nullable": true
           },
-          "routing_algorithm": {
-            "type": "object",
-            "description": "The routing algorithm to be used for routing payments to desired connectors",
-            "nullable": true
-          },
-          "payout_routing_algorithm": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
-              }
-            ],
-            "nullable": true
-          },
-          "sub_merchants_enabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the merchant is a sub-merchant under a master or a parent merchant. By default, its value is false.",
-            "default": false,
-            "example": false,
-            "nullable": true
-          },
-          "parent_merchant_id": {
-            "type": "string",
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
-            "example": "xkkdf909012sdjki2dkh5sdf",
-            "nullable": true,
-            "maxLength": 255
-          },
           "enable_payment_response_hash": {
             "type": "boolean",
             "description": "A boolean value to indicate if payment response hash needs to be enabled",
@@ -7748,7 +7691,18 @@
           },
           "payment_response_hash_key": {
             "type": "string",
-            "description": "Refers to the hash key used for payment response",
+            "description": "Refers to the hash key used for calculating the signature for webhooks and redirect response\nIf the value is not provided, a default value is used",
+            "nullable": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
+            "nullable": true
+          },
+          "locker_id": {
+            "type": "string",
+            "description": "An identifier for the vault used to store payment method information.",
+            "example": "locker_abc123",
             "nullable": true
           },
           "redirect_to_merchant_with_http_post": {
@@ -7758,29 +7712,20 @@
             "example": true,
             "nullable": true
           },
-          "metadata": {
-            "type": "object",
-            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
+          "routing_algorithm": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoutingAlgorithm"
+              }
+            ],
             "nullable": true
           },
-          "publishable_key": {
-            "type": "string",
-            "description": "API key that will be used for server side API access",
-            "example": "AH3423bkjbkjdsfbkj",
-            "nullable": true
-          },
-          "locker_id": {
-            "type": "string",
-            "description": "An identifier for the vault used to store payment method information.",
-            "example": "locker_abc123",
-            "nullable": true
-          },
-          "primary_business_details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PrimaryBusinessDetails"
-            },
-            "description": "Default business details for connector routing",
+          "payout_routing_algorithm": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoutingAlgorithm"
+              }
+            ],
             "nullable": true
           },
           "frm_routing_algorithm": {
@@ -7792,16 +7737,16 @@
             "type": "integer",
             "format": "int32",
             "description": "Will be used to expire client secret after certain amount of time to be supplied in seconds\n(900) for 15 mins",
+            "example": 900,
             "nullable": true,
             "minimum": 0
           },
-          "default_profile": {
-            "type": "string",
-            "description": "The default business profile that must be used for creating merchant accounts and payments\nTo unset this field, pass an empty string",
-            "nullable": true,
-            "maxLength": 64
-          },
           "payment_link_config": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaymentLinkConfig"
+              }
+            ],
             "nullable": true
           }
         }
@@ -7826,27 +7771,18 @@
             "example": "stripe_US_travel",
             "nullable": true
           },
+          "profile_id": {
+            "type": "string",
+            "description": "Identifier for the business profile, if not provided default will be chosen from merchant account",
+            "nullable": true
+          },
           "connector_account_details": {
-            "type": "object",
-            "description": "An object containing all the required details for a Connector account.",
-            "example": {
-              "auth_type": "HeaderKey",
-              "api_key": "{{stripe-api-key}}"
-            },
-            "nullable": true
-          },
-          "test_mode": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the connector is in Test mode. By default, its value is false.",
-            "default": false,
-            "example": false,
-            "nullable": true
-          },
-          "disabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the connector is disabled. By default, its value is false.",
-            "default": false,
-            "example": false,
+            "description": "An object containing the required details/credentials for a Connector account.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MerchantConnectorDetails"
+              }
+            ],
             "nullable": true
           },
           "payment_methods_enabled": {
@@ -7893,9 +7829,31 @@
             ],
             "nullable": true
           },
+          "connector_webhook_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MerchantConnectorWebhookDetails"
+              }
+            ],
+            "nullable": true
+          },
           "metadata": {
             "type": "object",
             "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
+            "nullable": true
+          },
+          "test_mode": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if the connector is in Test mode. By default, its value is false.",
+            "default": false,
+            "example": false,
+            "nullable": true
+          },
+          "disabled": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if the connector is disabled. By default, its value is false.",
+            "default": false,
+            "example": false,
             "nullable": true
           },
           "frm_configs": {
@@ -7926,25 +7884,6 @@
             "description": "The business sublabel to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
             "example": "chase",
             "nullable": true
-          },
-          "connector_webhook_details": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MerchantConnectorWebhookDetails"
-              }
-            ],
-            "nullable": true
-          },
-          "profile_id": {
-            "type": "string",
-            "description": "Identifier for the business profile, if not provided default will be chosen from merchant account",
-            "nullable": true
-          },
-          "pm_auth_config": {
-            "nullable": true
-          },
-          "status": {
-            "$ref": "#/components/schemas/ConnectorStatus"
           }
         }
       },
@@ -7977,14 +7916,31 @@
       "MerchantConnectorDetails": {
         "type": "object",
         "properties": {
-          "connector_account_details": {
-            "type": "object",
-            "description": "Account details of the Connector. You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Useful for storing additional, structured information on an object.",
+          "auth_type": {
+            "type": "string",
+            "example": "BodyKey",
+            "enum": [
+              "TemporaryAuth",
+              "HeaderKey",
+              "BodyKey",
+              "SignatureKey",
+              "MultiAuthKey",
+              "CurrencyAuthKey",
+              "NoKey"
+            ],
+            "description": "Auth type for the connector account",
             "nullable": true
           },
-          "metadata": {
-            "type": "object",
-            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
+          "api_key": {
+            "type": "string",
+            "description": "The API key of the connector account",
+            "example": "{{adyen_api_key}}",
+            "nullable": true
+          },
+          "key1": {
+            "type": "string",
+            "description": "Any additional API key or other IDs related to the connector account",
+            "example": "{{adyen_merchant_account}}",
             "nullable": true
           }
         }
@@ -8032,38 +7988,26 @@
             "$ref": "#/components/schemas/ConnectorType"
           },
           "connector_name": {
-            "type": "string",
-            "description": "Name of the Connector",
-            "example": "stripe"
+            "$ref": "#/components/schemas/Connector"
           },
           "connector_label": {
             "type": "string",
-            "description": "Connector label for a connector, this can serve as a field to identify the connector as per business details",
+            "description": "A unique label to identify the connector account created under a business profile",
             "example": "stripe_US_travel",
             "nullable": true
           },
-          "merchant_connector_id": {
+          "profile_id": {
             "type": "string",
-            "description": "Unique ID of the connector",
-            "example": "mca_5apGeP94tMts6rg3U3kR"
+            "description": "Identifier for the business profile, if not provided default will be chosen from merchant account",
+            "nullable": true
           },
           "connector_account_details": {
-            "type": "object",
-            "description": "Account details of the Connector. You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Useful for storing additional, structured information on an object.",
-            "nullable": true
-          },
-          "test_mode": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the connector is in Test mode. By default, its value is false.",
-            "default": false,
-            "example": false,
-            "nullable": true
-          },
-          "disabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the connector is disabled. By default, its value is false.",
-            "default": false,
-            "example": false,
+            "description": "An object containing the required details/credentials for a Connector account.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MerchantConnectorDetails"
+              }
+            ],
             "nullable": true
           },
           "payment_methods_enabled": {
@@ -8071,7 +8015,7 @@
             "items": {
               "$ref": "#/components/schemas/PaymentMethodsEnabled"
             },
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
+            "description": "An object containing the details about the payment methods that need to be enabled under this merchant connector account",
             "example": [
               {
                 "payment_method": "wallet",
@@ -8110,40 +8054,6 @@
             ],
             "nullable": true
           },
-          "metadata": {
-            "type": "object",
-            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
-            "nullable": true
-          },
-          "business_country": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CountryAlpha2"
-              }
-            ],
-            "nullable": true
-          },
-          "business_label": {
-            "type": "string",
-            "description": "Business Type of the merchant",
-            "example": "travel",
-            "nullable": true
-          },
-          "business_sub_label": {
-            "type": "string",
-            "description": "Business Sub label of the merchant",
-            "example": "chase",
-            "nullable": true
-          },
-          "frm_configs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FrmConfigs"
-            },
-            "description": "contains the frm configs for the merchant connector",
-            "example": "\n[{\"gateway\":\"stripe\",\"payment_methods\":[{\"payment_method\":\"card\",\"payment_method_types\":[{\"payment_method_type\":\"credit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\",\"action\":\"cancel_txn\"},{\"payment_method_type\":\"debit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\"}]}]}]\n",
-            "nullable": true
-          },
           "connector_webhook_details": {
             "allOf": [
               {
@@ -8152,25 +8062,53 @@
             ],
             "nullable": true
           },
-          "profile_id": {
-            "type": "string",
-            "description": "The business profile this connector must be created in\ndefault value from merchant account is taken if not passed",
-            "nullable": true,
-            "maxLength": 64
+          "metadata": {
+            "type": "object",
+            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
+            "nullable": true
           },
-          "applepay_verified_domains": {
+          "test_mode": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if the connector is in Test mode. By default, its value is false.",
+            "default": false,
+            "example": false,
+            "nullable": true
+          },
+          "disabled": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if the connector is disabled. By default, its value is false.",
+            "default": false,
+            "example": false,
+            "nullable": true
+          },
+          "frm_configs": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/FrmConfigs"
             },
-            "description": "identifier for the verified domains of a particular connector account",
+            "description": "Contains the frm configs for the merchant connector",
+            "example": "\n[{\"gateway\":\"stripe\",\"payment_methods\":[{\"payment_method\":\"card\",\"payment_method_types\":[{\"payment_method_type\":\"credit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\",\"action\":\"cancel_txn\"},{\"payment_method_type\":\"debit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\"}]}]}]\n",
             "nullable": true
           },
-          "pm_auth_config": {
+          "business_country": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CountryAlpha2"
+              }
+            ],
+            "description": "The business country to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
             "nullable": true
           },
-          "status": {
-            "$ref": "#/components/schemas/ConnectorStatus"
+          "business_label": {
+            "type": "string",
+            "description": "The business label to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
+            "nullable": true
+          },
+          "business_sub_label": {
+            "type": "string",
+            "description": "The business sublabel to which the connector account is attached. To be deprecated soon. Use the 'profile_id' instead",
+            "example": "chase",
+            "nullable": true
           }
         }
       },
@@ -8187,26 +8125,17 @@
           },
           "connector_label": {
             "type": "string",
-            "description": "Connector label for a connector, this can serve as a field to identify the connector as per business details",
+            "description": "A unique label to identify the connector account created under a business profile",
+            "example": "stripe_US_travel",
             "nullable": true
           },
           "connector_account_details": {
-            "type": "object",
-            "description": "Account details of the Connector. You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Useful for storing additional, structured information on an object.",
-            "nullable": true
-          },
-          "test_mode": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the connector is in Test mode. By default, its value is false.",
-            "default": false,
-            "example": false,
-            "nullable": true
-          },
-          "disabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the connector is disabled. By default, its value is false.",
-            "default": false,
-            "example": false,
+            "description": "An object containing the required details/credentials for a Connector account.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MerchantConnectorDetails"
+              }
+            ],
             "nullable": true
           },
           "payment_methods_enabled": {
@@ -8214,7 +8143,7 @@
             "items": {
               "$ref": "#/components/schemas/PaymentMethodsEnabled"
             },
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
+            "description": "An object containing the details about the payment methods that need to be enabled under this merchant connector account",
             "example": [
               {
                 "payment_method": "wallet",
@@ -8253,20 +8182,6 @@
             ],
             "nullable": true
           },
-          "metadata": {
-            "type": "object",
-            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
-            "nullable": true
-          },
-          "frm_configs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FrmConfigs"
-            },
-            "description": "contains the frm configs for the merchant connector",
-            "example": "\n[{\"gateway\":\"stripe\",\"payment_methods\":[{\"payment_method\":\"card\",\"payment_method_types\":[{\"payment_method_type\":\"credit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\",\"action\":\"cancel_txn\"},{\"payment_method_type\":\"debit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\"}]}]}]\n",
-            "nullable": true
-          },
           "connector_webhook_details": {
             "allOf": [
               {
@@ -8275,11 +8190,33 @@
             ],
             "nullable": true
           },
-          "pm_auth_config": {
+          "metadata": {
+            "type": "object",
+            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
             "nullable": true
           },
-          "status": {
-            "$ref": "#/components/schemas/ConnectorStatus"
+          "test_mode": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if the connector is in Test mode. By default, its value is false.",
+            "default": false,
+            "example": false,
+            "nullable": true
+          },
+          "disabled": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if the connector is disabled. By default, its value is false.",
+            "default": false,
+            "example": false,
+            "nullable": true
+          },
+          "frm_configs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FrmConfigs"
+            },
+            "description": "Contains the frm configs for the merchant connector",
+            "example": "\n[{\"gateway\":\"stripe\",\"payment_methods\":[{\"payment_method\":\"card\",\"payment_method_types\":[{\"payment_method_type\":\"credit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\",\"action\":\"cancel_txn\"},{\"payment_method_type\":\"debit\",\"card_networks\":[\"Visa\"],\"flow\":\"pre\"}]}]}]\n",
+            "nullable": true
           }
         }
       },
@@ -11903,18 +11840,18 @@
           "payment_id"
         ],
         "properties": {
-          "refund_id": {
+          "payment_id": {
             "type": "string",
-            "description": "Unique Identifier for the Refund. This is to ensure idempotency for multiple partial refund initiated against the same payment. If the identifiers is not defined by the merchant, this filed shall be auto generated and provide in the API response. It is recommended to generate uuid(v4) as the refund_id.",
-            "example": "ref_mbabizu24mvu3mela5njyhpit4",
-            "nullable": true,
+            "description": "The payment id against which refund is to be intiated",
+            "example": "pay_mbabizu24mvu3mela5njyhpit4",
             "maxLength": 30,
             "minLength": 30
           },
-          "payment_id": {
+          "refund_id": {
             "type": "string",
-            "description": "Total amount for which the refund is to be initiated. Amount for the payment in lowest denomination of the currency. (i.e) in cents for USD denomination, in paisa for INR denomination etc. If not provided, this will default to the full payment amount",
-            "example": "pay_mbabizu24mvu3mela5njyhpit4",
+            "description": "Unique Identifier for the Refund. This is to ensure idempotency for multiple partial refunds initiated against the same payment. If this is not passed by the merchant, this field shall be auto generated and provided in the API response. It is recommended to generate uuid(v4) as the refund_id.",
+            "example": "ref_mbabizu24mvu3mela5njyhpit4",
+            "nullable": true,
             "maxLength": 30,
             "minLength": 30
           },
@@ -11935,7 +11872,7 @@
           },
           "reason": {
             "type": "string",
-            "description": "An arbitrary string attached to the object. Often useful for displaying to users and your customer support executive",
+            "description": "Reason for the refund. Often useful for displaying to users and your customer support executive. In case the payment went through Stripe, this field needs to be passed with one of these enums: `duplicate`, `fraudulent`, or `requested_by_customer`",
             "example": "Customer returned the product",
             "nullable": true,
             "maxLength": 255
@@ -11967,65 +11904,63 @@
       "RefundResponse": {
         "type": "object",
         "properties": {
-          "refund_id": {
-            "type": "string",
-            "description": "The identifier for refund"
-          },
           "payment_id": {
             "type": "string",
-            "description": "The identifier for payment"
+            "description": "The payment id against which refund is to be intiated",
+            "example": "pay_mbabizu24mvu3mela5njyhpit4",
+            "maxLength": 30,
+            "minLength": 30
+          },
+          "refund_id": {
+            "type": "string",
+            "description": "Unique Identifier for the Refund. This is to ensure idempotency for multiple partial refunds initiated against the same payment. If this is not passed by the merchant, this field shall be auto generated and provided in the API response. It is recommended to generate uuid(v4) as the refund_id.",
+            "example": "ref_mbabizu24mvu3mela5njyhpit4",
+            "nullable": true,
+            "maxLength": 30,
+            "minLength": 30
+          },
+          "merchant_id": {
+            "type": "string",
+            "description": "The identifier for the Merchant Account",
+            "example": "y3oqhf46pyzuxjbcn2giaqnb44",
+            "nullable": true,
+            "maxLength": 255
           },
           "amount": {
             "type": "integer",
             "format": "int64",
-            "description": "The refund amount, which should be less than or equal to the total payment amount. Amount for the payment in lowest denomination of the currency. (i.e) in cents for USD denomination, in paisa for INR denomination etc"
-          },
-          "currency": {
-            "type": "string",
-            "description": "The three-letter ISO currency code"
+            "description": "Total amount for which the refund is to be initiated. Amount for the payment in lowest denomination of the currency. (i.e) in cents for USD denomination, in paisa for INR denomination etc., If not provided, this will default to the full payment amount",
+            "example": 6540,
+            "nullable": true,
+            "minimum": 100
           },
           "reason": {
             "type": "string",
-            "description": "An arbitrary string attached to the object. Often useful for displaying to users and your customer support executive",
-            "nullable": true
+            "description": "Reason for the refund. Often useful for displaying to users and your customer support executive. In case the payment went through Stripe, this field needs to be passed with one of these enums: `duplicate`, `fraudulent`, or `requested_by_customer`",
+            "example": "Customer returned the product",
+            "nullable": true,
+            "maxLength": 255
           },
-          "status": {
-            "$ref": "#/components/schemas/RefundStatus"
+          "refund_type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RefundType"
+              }
+            ],
+            "default": "Instant",
+            "nullable": true
           },
           "metadata": {
             "type": "object",
-            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object",
+            "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
             "nullable": true
           },
-          "error_message": {
-            "type": "string",
-            "description": "The error message",
-            "nullable": true
-          },
-          "error_code": {
-            "type": "string",
-            "description": "The code for the error",
-            "nullable": true
-          },
-          "created_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The timestamp at which refund is created",
-            "nullable": true
-          },
-          "updated_at": {
-            "type": "string",
-            "format": "date-time",
-            "description": "The timestamp at which refund is updated",
-            "nullable": true
-          },
-          "connector": {
-            "type": "string",
-            "description": "The connector used for the refund and the corresponding payment",
-            "example": "stripe"
-          },
-          "profile_id": {
-            "type": "string",
+          "merchant_connector_details": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MerchantConnectorDetailsWrap"
+              }
+            ],
             "nullable": true
           }
         }
@@ -12042,6 +11977,7 @@
       },
       "RefundType": {
         "type": "string",
+        "description": "To indicate whether to refund needs to be instant or scheduled. Default value is instant",
         "enum": [
           "scheduled",
           "instant"
