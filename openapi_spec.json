@@ -1479,28 +1479,83 @@
               },
               "examples": {
                 "Create a 3DS payment": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"authentication_type\" : \"three_ds\"\n    }"
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "authentication_type": "three_ds"
+                  }
                 },
                 "Create a manual capture payment": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"capture_method\":\"manual\"\n    }"
+                  "value": { "amount": 6540, "currency": "USD", "capture_method": "manual" }
                 },
                 "Create a payment": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"payment_id\": \"abcdefghijklmnopqrstuvwxyz\",\n        \"customer\": {\n            \"id\":\"cus_abcdefgh\",\n            \"name\":\"John Dough\",\n            \"phone\":\"9999999999\",\n            \"email\":\"john@example.com\"\n        },\n        \"description\": \"Its my first payment request\",\n        \"statement_descriptor_name\": \"joseph\",\n        \"statement_descriptor_suffix\": \"JS\",\n        \"metadata\": {\n            \"udf1\": \"some-value\",\n            \"udf2\": \"some-value\"\n        }\n    }"
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "payment_id": "abcdefghijklmnopqrstuvwxyz",
+                    "customer": {
+                      "id": "cus_abcdefgh",
+                      "name": "John Dough",
+                      "phone": "9999999999",
+                      "email": "john@example.com"
+                    },
+                    "description": "Its my first payment request",
+                    "statement_descriptor_name": "joseph",
+                    "statement_descriptor_suffix": "JS",
+                    "metadata": { "udf1": "some-value", "udf2": "some-value" }
+                  }
                 },
                 "Create a payment with address": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"customer\": {\n            \"id\" : \"cus_abcdefgh\"\n        },\n        \"billing\": {\n            \"address\": {\n                \"line1\": \"1467\",\n                \"line2\": \"Harrison Street\",\n                \"line3\": \"Harrison Street\",\n                \"city\": \"San Fransico\",\n                \"state\": \"California\",\n                \"zip\": \"94122\",\n                \"country\": \"US\",\n                \"first_name\": \"joseph\",\n                \"last_name\": \"Doe\"\n            },\n            \"phone\": {\n                \"number\": \"8056594427\",\n                \"country_code\": \"+91\"\n            }\n        }\n    }"
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "customer": { "id": "cus_abcdefgh" },
+                    "billing": {
+                      "address": {
+                        "line1": "1467",
+                        "line2": "Harrison Street",
+                        "line3": "Harrison Street",
+                        "city": "San Fransico",
+                        "state": "California",
+                        "zip": "94122",
+                        "country": "US",
+                        "first_name": "joseph",
+                        "last_name": "Doe"
+                      },
+                      "phone": { "number": "8056594427", "country_code": "+91" }
+                    }
+                  }
                 },
                 "Create a payment with customer details": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"customer\": {\n            \"id\":\"cus_abcdefgh\",\n            \"name\":\"John Dough\",\n            \"phone\":\"9999999999\",\n            \"email\":\"john@example.com\"\n        }\n    }"
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "customer": {
+                      "id": "cus_abcdefgh",
+                      "name": "John Dough",
+                      "phone": "9999999999",
+                      "email": "john@example.com"
+                    }
+                  }
                 },
                 "Create a payment with minimul fields": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n    }"
+                  "value": { "amount": 6540, "currency": "USD" }
                 },
                 "Create a payment with order category for noon": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"connector_metadata\": {\n            \"noon\": {\n                \"order_category\":\"shoes\"\n            }\n        }\n    }"
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "connector_metadata": { "noon": { "order_category": "shoes" } }
+                  }
                 },
                 "Create a payment with order details": {
-                  "value": "{\n        \"amount\": 6540,\n        \"currency\": \"USD\",\n        \"order_details\": [\n            {\n                \"product_name\": \"Apple iPhone 15\",\n                \"quantity\": 1,\n                \"amount\" : 6540\n            }\n        ]\n    }"
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "order_details": [
+                      { "product_name": "Apple iPhone 15", "quantity": 1, "amount": 6540 }
+                    ]
+                  }
                 }
               }
             }
