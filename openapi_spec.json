@@ -1655,7 +1655,11 @@
                   }
                 },
                 "Create a manual capture payment": {
-                  "value": { "amount": 6540, "currency": "USD", "capture_method": "manual" }
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "capture_method": "manual"
+                  }
                 },
                 "Create a payment": {
                   "value": {
@@ -1671,14 +1675,19 @@
                     "description": "Its my first payment request",
                     "statement_descriptor_name": "joseph",
                     "statement_descriptor_suffix": "JS",
-                    "metadata": { "udf1": "some-value", "udf2": "some-value" }
+                    "metadata": {
+                      "udf1": "some-value",
+                      "udf2": "some-value"
+                    }
                   }
                 },
                 "Create a payment with address": {
                   "value": {
                     "amount": 6540,
                     "currency": "USD",
-                    "customer": { "id": "cus_abcdefgh" },
+                    "customer": {
+                      "id": "cus_abcdefgh"
+                    },
                     "billing": {
                       "address": {
                         "line1": "1467",
@@ -1691,7 +1700,10 @@
                         "first_name": "joseph",
                         "last_name": "Doe"
                       },
-                      "phone": { "number": "8056594427", "country_code": "+91" }
+                      "phone": {
+                        "number": "8056594427",
+                        "country_code": "+91"
+                      }
                     }
                   }
                 },
@@ -1708,13 +1720,20 @@
                   }
                 },
                 "Create a payment with minimul fields": {
-                  "value": { "amount": 6540, "currency": "USD" }
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD"
+                  }
                 },
                 "Create a payment with order category for noon": {
                   "value": {
                     "amount": 6540,
                     "currency": "USD",
-                    "connector_metadata": { "noon": { "order_category": "shoes" } }
+                    "connector_metadata": {
+                      "noon": {
+                        "order_category": "shoes"
+                      }
+                    }
                   }
                 },
                 "Create a payment with order details": {
@@ -1722,7 +1741,11 @@
                     "amount": 6540,
                     "currency": "USD",
                     "order_details": [
-                      { "product_name": "Apple iPhone 15", "quantity": 1, "amount": 6540 }
+                      {
+                        "product_name": "Apple iPhone 15",
+                        "quantity": 1,
+                        "amount": 6540
+                      }
                     ]
                   }
                 }
@@ -13069,7 +13092,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "api-key",
-        "description": "API keys are the most common method of authentication and can be obtained from the HyperSwitch dashboard."
+        "description": "API keys are the most common method of authentication and can be obtained from the HyperSwitch dashboard. Used to authenticate API requests from your merchant server. Don’t expose this key on a website or embed it in a mobile application."
       },
       "ephemeral_key": {
         "type": "apiKey",
@@ -13081,7 +13104,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "api-key",
-        "description": "Publishable keys are a type of keys that can be public and have limited scope of usage."
+        "description": "Publishable keys are a type of secret keys that can be public and embedded in your client and app side code. Use it in conjunction with client_secret to make API requests from your client"
       }
     }
   },
