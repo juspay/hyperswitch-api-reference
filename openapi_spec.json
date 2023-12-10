@@ -142,6 +142,27 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/MerchantAccountCreate"
+              },
+              "examples": {
+                "Create a merchant account with minimal fields": {
+                  "value": {
+                    "merchant_id": "merchant_abc"
+                  }
+                },
+                "Create a merchant account with webhook url": {
+                  "value": {
+                    "merchant_id": "merchant_abc",
+                    "webhook_details": {
+                      "webhook_url": "https://webhook.site/a5c54f75-1f7e-4545-b781-af525b7e37a0"
+                    }
+                  }
+                },
+                "Create a merchant account with return url": {
+                  "value": {
+                    "merchant_id": "merchant_abc",
+                    "return_url": "https://example.com"
+                  }
+                }
               }
             }
           },
@@ -232,6 +253,28 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/MerchantAccountUpdate"
+              },
+              "examples": {
+                "Update merchant name": {
+                  "value": {
+                    "merchant_id": "merchant_abc",
+                    "merchant_name": "Shoe Merchant"
+                  }
+                },
+                "Update webhook url": {
+                  "value": {
+                    "merchant_id": "merchant_abc",
+                    "webhook_details": {
+                      "webhook_url": "https://webhook.site/a5c54f75-1f7e-4545-b781-af525b7e37a0"
+                    }
+                  }
+                },
+                "Update return url": {
+                  "value": {
+                    "merchant_id": "merchant_abc",
+                    "return_url": "https://example.com"
+                  }
+                }
               }
             }
           },
@@ -356,6 +399,40 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/MerchantConnectorCreate"
+              },
+              "examples": {
+                "Create a merchant connector account with minimal fields": {
+                  "value": {
+                    "connector_type": "fiz_operations",
+                    "connector_name": "stripe",
+                    "connector_account_details": {
+                      "auth_type": "HeaderKey",
+                      "api_key": "{{stripe-api-key}}"
+                    }
+                  }
+                },
+                "Create a merchant connector account under a specific business profile": {
+                  "value": {
+                    "connector_type": "fiz_operations",
+                    "connector_name": "stripe",
+                    "connector_account_details": {
+                      "auth_type": "HeaderKey",
+                      "api_key": "{{stripe-api-key}}"
+                    },
+                    "profile_id": "{{profile_id}}"
+                  }
+                },
+                "Create a merchant account with custom connector label": {
+                  "value": {
+                    "connector_type": "fiz_operations",
+                    "connector_name": "stripe",
+                    "connector_label": "EU_stripe",
+                    "connector_account_details": {
+                      "auth_type": "HeaderKey",
+                      "api_key": "{{stripe-api-key}}"
+                    }
+                  }
+                }
               }
             }
           },
@@ -469,6 +546,25 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/MerchantConnectorUpdate"
+              },
+              "examples": {
+                "Enable card payment method": {
+                  "value": {
+                    "connector_type": "fiz_operations",
+                    "payment_methods_enabled": [
+                      {
+                        "payment_method": "card"
+                      }
+                    ]
+                  }
+                },
+                "Update webhook secret": {
+                  "value": {
+                    "connector_webhook_details": {
+                      "merchant_secret": "{{webhook_secret}}"
+                    }
+                  }
+                }
               }
             }
           },
@@ -564,6 +660,14 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/CustomerRequest"
+              },
+              "examples": {
+                "Create a customer with name and email": {
+                  "value": {
+                    "email": "guest@example.com",
+                    "name": "John Doe"
+                  }
+                }
               }
             }
           },
@@ -765,6 +869,14 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CustomerResponse"
+                },
+                "examples": {
+                  "Update name and email of a customer": {
+                    "value": {
+                      "email": "guest@example.com",
+                      "name": "John Doe"
+                    }
+                  }
                 }
               }
             }
@@ -1476,6 +1588,22 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PaymentMethodCreate"
+              },
+              "examples": {
+                "Save a card": {
+                  "value": {
+                    "payment_method": "card",
+                    "payment_method_type": "credit",
+                    "payment_method_issuer": "Visa",
+                    "card": {
+                      "card_number": "4242424242424242",
+                      "card_exp_month": "11",
+                      "card_exp_year": "25",
+                      "card_holder_name": "John Doe"
+                    },
+                    "customer_id": "{{customer_id}}"
+                  }
+                }
               }
             }
           },
@@ -2085,6 +2213,28 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PaymentsResponse"
+                },
+                "examples": {
+                  "Update the payment amount": {
+                    "value": {
+                      "amount": 6544
+                    }
+                  },
+                  "Update shipping address": {
+                    "value": {
+                      "shipping": {
+                        "address": {
+                          "line1": "1467",
+                          "line2": "Harrison Street",
+                          "line3": "Harrison Street",
+                          "city": "San Fransico",
+                          "state": "California",
+                          "zip": "94122",
+                          "country": "US"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -2127,6 +2277,16 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PaymentsCancelRequest"
+              },
+              "examples": {
+                "Cancel the payment with minimal fields": {
+                  "value": {}
+                },
+                "Cancel the payment with cancellation reason": {
+                  "value": {
+                    "cancellation_reason": "requested_by_customer"
+                  }
+                }
               }
             }
           },
@@ -2183,6 +2343,16 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PaymentsResponse"
+                },
+                "examples": {
+                  "Capture the full amount": {
+                    "value": {}
+                  },
+                  "Capture partial amount": {
+                    "value": {
+                      "amount_to_capture": 6500
+                    }
+                  }
                 }
               }
             }
@@ -2222,6 +2392,23 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/PaymentsRequest"
+              },
+              "examples": {
+                "Confirm a payment with payment method data": {
+                  "value": {
+                    "payment_method": "card",
+                    "payment_method_type": "credit",
+                    "payment_method_data": {
+                      "card": {
+                          "card_number": "4242424242424242",
+                          "card_exp_month": "10",
+                          "card_exp_year": "25",
+                          "card_holder_name": "joseph Doe",
+                          "card_cvc": "123"
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -2497,6 +2684,29 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RefundRequest"
+              },
+              "examples": {
+                "Create an instant refund to refund the whole amount": {
+                  "value": {
+                    "payment_id": "{{payment_id}}",
+                    "refund_type": "instant"
+                  }
+                },
+                "Create an instant refund to refund partial amount": {
+                  "value": {
+                    "payment_id": "{{payment_id}}",
+                    "refund_type": "instant",
+                    "amount": 654
+                  }
+                },
+                "Create an instant refund with reason": {
+                  "value": {
+                    "payment_id": "{{payment_id}}",
+                    "refund_type": "instant",
+                    "amount": 6540,
+                    "reason": "Customer returned product"
+                  }
+                }
               }
             }
           },
@@ -2624,6 +2834,13 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/RefundUpdateRequest"
+              },
+              "examples": {
+                "Update refund reason": {
+                  "value": {
+                    "reason": "Paid by mistake"
+                  }
+                }
               }
             }
           },
