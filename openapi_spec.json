@@ -25,8 +25,8 @@
         "tags": [
           "Payment Methods"
         ],
-        "summary": "Lists payment methods for a Merchant",
-        "description": "To filter and list the applicable payment methods for a particular Merchant ID. Use the client secret and publishable key authorization to list all relevant payment methods of the merchant for the payment corresponding to the client secret",
+        "summary": "List payment methods for a Merchant",
+        "description": "Lists the applicable payment methods for a particular Merchant ID. Use the client secret and publishable key authorization to list all relevant payment methods of the merchant for the payment corresponding to the client secret",
         "operationId": "List all Payment Methods for a Merchant",
         "parameters": [
           {
@@ -1823,11 +1823,6 @@
                       "amount": 6540,
                       "currency": "USD",
                       "abc": "ac"
-                    }
-                  },
-                  "Create a payment 2": {
-                    "value": {
-                      "amount": 6540
                     }
                   }
                 }
@@ -5610,10 +5605,6 @@
       },
       "CustomerResponse": {
         "type": "object",
-        "required": [
-          "customer_id",
-          "created_at"
-        ],
         "properties": {
           "customer_id": {
             "type": "string",
@@ -5679,19 +5670,6 @@
       },
       "DisputeResponse": {
         "type": "object",
-        "required": [
-          "dispute_id",
-          "payment_id",
-          "attempt_id",
-          "amount",
-          "currency",
-          "dispute_stage",
-          "dispute_status",
-          "connector",
-          "connector_status",
-          "connector_dispute_id",
-          "created_at"
-        ],
         "properties": {
           "dispute_id": {
             "type": "string",
@@ -6709,16 +6687,6 @@
       },
       "GsmResponse": {
         "type": "object",
-        "required": [
-          "connector",
-          "flow",
-          "sub_flow",
-          "code",
-          "message",
-          "status",
-          "decision",
-          "step_up_possible"
-        ],
         "properties": {
           "connector": {
             "type": "string"
@@ -7078,12 +7046,6 @@
       },
       "MandateResponse": {
         "type": "object",
-        "required": [
-          "mandate_id",
-          "status",
-          "payment_method_id",
-          "payment_method"
-        ],
         "properties": {
           "mandate_id": {
             "type": "string",
@@ -7239,32 +7201,13 @@
             ],
             "nullable": true
           },
-          "routing_algorithm": {
-            "type": "object",
-            "description": "The routing algorithm to be used for routing payments to desired connectors",
-            "nullable": true
-          },
-          "payout_routing_algorithm": {
+          "primary_business_details": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
+                "$ref": "#/components/schemas/PrimaryBusinessDetails"
               }
             ],
             "nullable": true
-          },
-          "sub_merchants_enabled": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if the merchant is a sub-merchant under a master or a parent merchant. By default, its value is false.",
-            "default": false,
-            "example": false,
-            "nullable": true
-          },
-          "parent_merchant_id": {
-            "type": "string",
-            "description": "Refers to the Parent Merchant ID if the merchant being created is a sub-merchant",
-            "example": "xkkdf909012sdjki2dkh5sdf",
-            "nullable": true,
-            "maxLength": 255
           },
           "enable_payment_response_hash": {
             "type": "boolean",
@@ -7278,22 +7221,9 @@
             "description": "Refers to the hash key used for calculating the signature for webhooks and redirect response\nIf the value is not provided, a default value is used",
             "nullable": true
           },
-          "redirect_to_merchant_with_http_post": {
-            "type": "boolean",
-            "description": "A boolean value to indicate if redirect to merchant with http post needs to be enabled",
-            "default": false,
-            "example": true,
-            "nullable": true
-          },
           "metadata": {
             "type": "object",
             "description": "You can specify up to 50 keys, with key names up to 40 characters long and values up to 500 characters long. Metadata is useful for storing additional, structured information on an object.",
-            "nullable": true
-          },
-          "publishable_key": {
-            "type": "string",
-            "description": "API key that will be used for server side API access",
-            "example": "AH3423bkjbkjdsfbkj",
             "nullable": true
           },
           "locker_id": {
@@ -7302,10 +7232,25 @@
             "example": "locker_abc123",
             "nullable": true
           },
-          "primary_business_details": {
+          "redirect_to_merchant_with_http_post": {
+            "type": "boolean",
+            "description": "A boolean value to indicate if redirect to merchant with http post needs to be enabled",
+            "default": false,
+            "example": true,
+            "nullable": true
+          },
+          "routing_algorithm": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/PrimaryBusinessDetails"
+                "$ref": "#/components/schemas/RoutingAlgorithm"
+              }
+            ],
+            "nullable": true
+          },
+          "payout_routing_algorithm": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RoutingAlgorithm"
               }
             ],
             "nullable": true
@@ -7322,11 +7267,6 @@
             "example": 900,
             "nullable": true,
             "minimum": 0
-          },
-          "organization_id": {
-            "type": "string",
-            "description": "The id of the organization to which the merchant belongs to",
-            "nullable": true
           },
           "payment_link_config": {
             "allOf": [
@@ -7360,15 +7300,6 @@
       },
       "MerchantAccountResponse": {
         "type": "object",
-        "required": [
-          "merchant_id",
-          "enable_payment_response_hash",
-          "redirect_to_merchant_with_http_post",
-          "primary_business_details",
-          "organization_id",
-          "is_recon_enabled",
-          "recon_status"
-        ],
         "properties": {
           "merchant_id": {
             "type": "string",
@@ -7502,7 +7433,7 @@
           },
           "default_profile": {
             "type": "string",
-            "description": "The default business profile that must be used for creating merchant accounts and payments",
+            "description": "The default business profile that will be used for creating merchant connector accounts and payments",
             "nullable": true,
             "maxLength": 64
           },
@@ -7510,6 +7441,11 @@
             "$ref": "#/components/schemas/ReconStatus"
           },
           "payment_link_config": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaymentLinkConfig"
+              }
+            ],
             "nullable": true
           }
         }
@@ -7871,12 +7807,6 @@
       "MerchantConnectorResponse": {
         "type": "object",
         "description": "Response of creating a new Merchant Connector for the merchant account.\"",
-        "required": [
-          "connector_type",
-          "connector_name",
-          "merchant_connector_id",
-          "status"
-        ],
         "properties": {
           "connector_type": {
             "$ref": "#/components/schemas/ConnectorType"
@@ -8152,6 +8082,7 @@
       },
       "MerchantDetails": {
         "type": "object",
+        "description": "Details about the merchant",
         "properties": {
           "primary_contact_person": {
             "type": "string",
@@ -9025,9 +8956,11 @@
       },
       "PaymentLinkConfig": {
         "type": "object",
+        "description": "Default configuration for payment links",
         "properties": {
           "merchant_logo": {
             "type": "string",
+            "description": "Used to provide an image url of the merchant's logo",
             "example": "https://i.imgur.com/RfxPFQo.png",
             "nullable": true,
             "maxLength": 255
@@ -9466,11 +9399,6 @@
       },
       "PaymentMethodListResponse": {
         "type": "object",
-        "required": [
-          "payment_methods",
-          "mandate_payment",
-          "show_surcharge_breakup_screen"
-        ],
         "properties": {
           "redirect_url": {
             "type": "string",
@@ -9518,13 +9446,6 @@
       },
       "PaymentMethodResponse": {
         "type": "object",
-        "required": [
-          "merchant_id",
-          "payment_method_id",
-          "payment_method",
-          "recurring_enabled",
-          "installment_payment_enabled"
-        ],
         "properties": {
           "merchant_id": {
             "type": "string",
@@ -10531,13 +10452,6 @@
       },
       "PaymentsResponse": {
         "type": "object",
-        "required": [
-          "status",
-          "amount",
-          "currency",
-          "payment_method",
-          "attempt_count"
-        ],
         "properties": {
           "payment_id": {
             "type": "string",
@@ -11311,24 +11225,6 @@
       },
       "PayoutCreateResponse": {
         "type": "object",
-        "required": [
-          "payout_id",
-          "merchant_id",
-          "amount",
-          "currency",
-          "payout_type",
-          "customer_id",
-          "auto_fulfill",
-          "client_secret",
-          "return_url",
-          "business_country",
-          "description",
-          "entity_type",
-          "status",
-          "error_message",
-          "error_code",
-          "profile_id"
-        ],
         "properties": {
           "payout_id": {
             "type": "string",
@@ -11663,6 +11559,7 @@
       },
       "ReconStatus": {
         "type": "string",
+        "description": "Used to indicate the status of the recon module for a merchant account",
         "enum": [
           "not_requested",
           "requested",
@@ -11847,14 +11744,6 @@
       },
       "RefundResponse": {
         "type": "object",
-        "required": [
-          "refund_id",
-          "payment_id",
-          "amount",
-          "currency",
-          "status",
-          "connector"
-        ],
         "properties": {
           "refund_id": {
             "type": "string",
@@ -13101,6 +12990,7 @@
       },
       "WebhookDetails": {
         "type": "object",
+        "description": "Webhook related details",
         "properties": {
           "webhook_version": {
             "type": "string",
