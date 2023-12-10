@@ -1638,7 +1638,7 @@
           "Payments"
         ],
         "summary": "Payments - Create",
-        "description": "Creates a payment object when amount and currency are passed. This API is also used to create a mandate by passing the mandate_object.\\n To completely process a payment you will have to create a payment, attach a payment method, confirm and capture funds. \n Depending on the user journey you wish to achieve, you may opt to complete all the steps in a single request by attaching a payment method, setting confirm=true and capture_method = automatic in the Payments/Create API request or you could use the following sequence of API requests to achieve the same : (i) Payments - Create (ii)Payments - Update (iii) Payments - Confirm (iv) Payments - Capture. Use the client secret returned in this API along with your publishable key to make subsequent API calls from your client",
+        "description": "**Creates a payment object when amount and currency are passed.** This API is also used to create a mandate by passing the mandate_object.\n\nTo completely process a payment you will have to create a payment, attach a payment method, confirm and capture funds.\n\nDepending on the user journey you wish to achieve, you may opt to complete all the steps in a single request by attaching a payment method, setting `confirm=true` and `capture_method = automatic` in the *Payments/Create API* request or you could use the following sequence of API requests to achieve the same:\n\n 1. Payments - Create\n\n2. Payments - Update\n\n3. Payments - Confirm\n\n4. Payments - Capture.\n\nUse the client secret returned in this API along with your publishable key to make subsequent API calls from your client",
         "operationId": "Create a Payment",
         "requestBody": {
           "content": {
@@ -1821,13 +1821,13 @@
                   "Create a payment with minimal fields": {
                     "value": {
                       "amount": 6540,
-                      "currency": "USD"
+                      "currency": "USD",
+                      "abc": "ac"
                     }
                   },
-                  "Create a payment with minimal fields2": {
+                  "Create a payment 2": {
                     "value": {
-                      "amount": 6540,
-                      "currency": "USD"
+                      "amount": 6540
                     }
                   }
                 }
@@ -5167,7 +5167,7 @@
           },
           "api_key": {
             "type": "string",
-            "description": "The plaintext API Key used for server-side API access. Ensure you store the API Key\nsecurely as you will not be able to see it again.",
+            "description": "The plaintext API Key used for server-side API access. Ensure you store the API Key securely as you will not be able to see it again.",
             "maxLength": 128
           },
           "created": {
@@ -9836,14 +9836,6 @@
           "currency"
         ],
         "properties": {
-          "payment_id": {
-            "type": "string",
-            "description": "Unique identifier for the payment. This ensures idempotency for multiple payments\nthat have been done by a single merchant. This field can be passed while creating a payment and if not passed, it is auto generated and is returned in the API response.",
-            "example": "pay_mbabizu24mvu3mela5njyhpit4",
-            "nullable": true,
-            "maxLength": 30,
-            "minLength": 30
-          },
           "amount": {
             "type": "integer",
             "format": "int64",
@@ -9859,6 +9851,14 @@
               }
             ],
             "nullable": true
+          },
+          "payment_id": {
+            "type": "string",
+            "description": "Unique identifier for the payment. This ensures idempotency for multiple payments\nthat have been done by a single merchant. This field can be passed while creating a payment and if not passed, it is auto generated and is returned in the API response.",
+            "example": "pay_mbabizu24mvu3mela5njyhpit4",
+            "nullable": true,
+            "maxLength": 30,
+            "minLength": 30
           },
           "capture_method": {
             "allOf": [
