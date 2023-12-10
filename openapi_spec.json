@@ -1823,6 +1823,12 @@
                       "amount": 6540,
                       "currency": "USD"
                     }
+                  },
+                  "Create a payment with minimal fields2": {
+                    "value": {
+                      "amount": 6540,
+                      "currency": "USD"
+                    }
                   }
                 }
               }
