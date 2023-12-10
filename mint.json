@@ -23,7 +23,9 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction"]
+      "pages": [
+        "introduction"
+      ]
     },
     {
       "group": "Essentials",
@@ -32,20 +34,6 @@
         "essentials/error_codes",
         "essentials/rate_limit",
         "essentials/go-live"
-      ]
-    },
-    {
-      "group": "Payments",
-      "pages": [
-        "api-reference/payments/payments--create",
-        "api-reference/payments/payments--list",
-        "api-reference/payments/payments--session-token",
-        "api-reference/payments/payments--retrieve",
-        "api-reference/payments/payments--update",
-        "api-reference/payments/payments--cancel",
-        "api-reference/payments/payments--capture",
-        "api-reference/payments/payments--confirm",
-        "api-reference/payments/payments-link--retrieve"
       ]
     },
     {
@@ -68,15 +56,17 @@
       ]
     },
     {
-      "group": "Payment Methods",
+      "group": "Payments",
       "pages": [
-        "api-reference/payment-methods/list-payment-methods-for-a-merchant",
-        "api-reference/payment-methods/list-payment-methods-for-a-customer",
-        "api-reference/payment-methods/list-payment-methods-for-a-customer-1",
-        "api-reference/payment-methods/paymentmethods--create",
-        "api-reference/payment-methods/payment-method--retrieve",
-        "api-reference/payment-methods/payment-method--update",
-        "api-reference/payment-methods/payment-method--delete"
+        "api-reference/payments/payments--create",
+        "api-reference/payments/payments--list",
+        "api-reference/payments/payments--session-token",
+        "api-reference/payments/payments--retrieve",
+        "api-reference/payments/payments--update",
+        "api-reference/payments/payments--cancel",
+        "api-reference/payments/payments--capture",
+        "api-reference/payments/payments--confirm",
+        "api-reference/payments/payments-link--retrieve"
       ]
     },
     {
@@ -89,17 +79,14 @@
       ]
     },
     {
-      "group": "Customers",
+      "group": "Payouts",
       "pages": [
-        "api-reference/customers/create-customer",
-        "api-reference/customers/retrieve-customer",
-        "api-reference/customers/update-customer",
-        "api-reference/customers/delete-customer"
+        "api-reference/payouts/payouts--create",
+        "api-reference/payouts/payouts--retrieve",
+        "api-reference/payouts/payouts--update",
+        "api-reference/payouts/payouts--cancel",
+        "api-reference/payouts/payouts--fulfill"
       ]
-    },
-    {
-      "group": "Customers List",
-      "pages": ["api-reference/customers-list/list-customers-for-a-merchant"]
     },
     {
       "group": "Mandates",
@@ -116,22 +103,39 @@
       ]
     },
     {
-      "group": "Gsm",
+      "group": "Payment Methods",
+      "pages": [
+        "api-reference/payment-methods/list-payment-methods-for-a-merchant",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer-1",
+        "api-reference/payment-methods/paymentmethods--create",
+        "api-reference/payment-methods/payment-method--retrieve",
+        "api-reference/payment-methods/payment-method--update",
+        "api-reference/payment-methods/payment-method--delete"
+      ]
+    },
+    {
+      "group": "Customers",
+      "pages": [
+        "api-reference/customers/create-customer",
+        "api-reference/customers/retrieve-customer",
+        "api-reference/customers/update-customer",
+        "api-reference/customers/delete-customer"
+      ]
+    },
+    {
+      "group": "Customers List",
+      "pages": [
+        "api-reference/customers-list/list-customers-for-a-merchant"
+      ]
+    },
+    {
+      "group": "GSM (Global Status Mapping)",
       "pages": [
         "api-reference/gsm/gsm--create",
         "api-reference/gsm/gsm--delete",
         "api-reference/gsm/gsm--get",
         "api-reference/gsm/gsm--update"
-      ]
-    },
-    {
-      "group": "Payouts",
-      "pages": [
-        "api-reference/payouts/payouts--create",
-        "api-reference/payouts/payouts--retrieve",
-        "api-reference/payouts/payouts--update",
-        "api-reference/payouts/payouts--cancel",
-        "api-reference/payouts/payouts--fulfill"
       ]
     },
     {
@@ -158,12 +162,17 @@
     },
     {
       "group": "Schemas",
-      "pages": ["api-reference/schemas/outgoing--webhook"]
+      "pages": [
+        "api-reference/schemas/outgoing--webhook"
+      ]
     }
   ],
   "footerSocials": {
     "github": "https://github.com/juspay/hyperswitch",
     "linkedin": "https://www.linkedin.com/company/hyperswitch"
   },
-  "openapi": ["openapi_spec.json", "rust_locker_open_api_spec.yml"]
+  "openapi": [
+    "openapi_spec.json",
+    "rust_locker_open_api_spec.yml"
+  ]
 }

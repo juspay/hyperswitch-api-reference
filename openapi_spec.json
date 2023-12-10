@@ -135,7 +135,7 @@
           "Merchant Account"
         ],
         "summary": "Merchant Account - Create",
-        "description": "Merchant Account - Create\n\nCreate a new account for a merchant and the merchant could be a seller or retailer or client who likes to receive and send payments.",
+        "description": "Creates a new account for a merchant. The merchant could be a seller or retailer or client who likes to receive and send payments",
         "operationId": "Create a Merchant Account",
         "requestBody": {
           "content": {
@@ -175,7 +175,7 @@
           "Merchant Account"
         ],
         "summary": "Merchant Account - Retrieve",
-        "description": "Merchant Account - Retrieve\n\nRetrieve a merchant account details.",
+        "description": "Retrieves details of a merchant account",
         "operationId": "Retrieve a Merchant Account",
         "parameters": [
           {
@@ -214,7 +214,7 @@
           "Merchant Account"
         ],
         "summary": "Merchant Account - Update",
-        "description": "Merchant Account - Update\n\nTo update an existing merchant account. Helpful in updating merchant details such as email, contact details, or other configuration details like webhook, routing algorithm etc",
+        "description": "Updates details of an existing merchant account. Helpful in updating merchant details such as email, contact details, or other configuration details like webhook, routing algorithm etc",
         "operationId": "Update a Merchant Account",
         "parameters": [
           {
@@ -263,7 +263,7 @@
           "Merchant Account"
         ],
         "summary": "Merchant Account - Delete",
-        "description": "Merchant Account - Delete\n\nTo delete a merchant account",
+        "description": "Deletes a merchant account",
         "operationId": "Delete a Merchant Account",
         "parameters": [
           {
