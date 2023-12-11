@@ -18,14 +18,16 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Locker API Reference",
+      "url": "locker-api-reference"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "Essentials",
@@ -43,6 +45,14 @@
         "api-reference/merchant-account/merchant-account--retrieve",
         "api-reference/merchant-account/merchant-account--update",
         "api-reference/merchant-account/merchant-account--delete"
+      ]
+    },
+    {
+      "group": "Business Profile",
+      "pages": [
+        "api-reference/business-profile/business-profile--create",
+        "api-reference/business-profile/business-profile--update",
+        "api-reference/business-profile/business-profile--list"
       ]
     },
     {
@@ -136,30 +146,28 @@
     {
       "group": "Locker - Health",
       "pages": [
-        "api-reference/locker-health/get-health"
+        "locker-api-reference/locker-health/get-health"
       ]
     },
     {
       "group": "Locker - Key Custodian",
       "pages": [
-        "api-reference/key-custodian/provide-key-1",
-        "api-reference/key-custodian/provide-key-2",
-        "api-reference/key-custodian/unlock-the-locker"
+        "locker-api-reference/key-custodian/provide-key-1",
+        "locker-api-reference/key-custodian/provide-key-2",
+        "locker-api-reference/key-custodian/unlock-the-locker"
       ]
     },
     {
       "group": "Locker - Cards",
       "pages": [
-        "api-reference/cards/add-data-in-locker",
-        "api-reference/cards/delete-data-from-locker",
-        "api-reference/cards/retrieve-data-from-locker"
+        "locker-api-reference/cards/add-data-in-locker",
+        "locker-api-reference/cards/delete-data-from-locker",
+        "locker-api-reference/cards/retrieve-data-from-locker"
       ]
     },
     {
       "group": "Schemas",
-      "pages": [
-        "api-reference/schemas/outgoing--webhook"
-      ]
+      "pages": ["api-reference/schemas/outgoing--webhook"]
     }
   ],
   "footerSocials": {
