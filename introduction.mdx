@@ -36,27 +36,8 @@ Get your [API key](https://app.hyperswitch.io/developers?tabIndex=1) and [Publis
 [Postman Collection](https://www.postman.com/hyperswitch/workspace/hyperswitch-development/collection/25176162-630b5353-7002-44d1-8ba1-ead6c230f2e3)
 </Check>
 
-<Tabs>
-  <Tab title="Endpoints and Schema">
-    Hyperswitch’s Payments API is a comprehensive, robust API that could take care of various complex global payments scenarios. Find below an overview of our API endpoints and schema:
-  | API                 | Endpoints                                            |
-  | ------------------- | ---------------------------------------------------- |
-  | **Payments**        | `/payments`, `/payments/{payment_id}/confirm`, `/payments/{payment_id}/capture`, `/payments/{payment_id}/update` |
-  | **Mandates**        | `/mandates/{mandate_id}`, `/mandates/revoke/{mandate_id}` |
-  | **Refunds**         | `/refunds`, `/refunds/{refund_id}` (retrieve)       |
-  | **Customers**       | `/customers`, `/customers/{customer_id}` (retrieve, update, and delete) |
-  | **Payment Methods** | `/payment_methods`, `/payment_methods/{method_id}` (update and delete) |
-  | **Disputes**        | `/disputes/{dispute_id}` (retrieve)                  |
-  <Info>
-  Payments API essentially requires only two steps to process a payment through Hyperswitch:
-
-  1. [Create a payment](https://juspay-78.mintlify.app/api-reference/payments/payments--create).
-  2. [Confirm a payment](https://juspay-78.mintlify.app/api-reference/payments/payments--confirm).
-  </Info>
-  </Tab>
-  <Tab title="Payment Status Lifecycle">
-    Hyperswitch handles the complex functionality of a comprehensive payments flow through the Payments object that transitions through multiple states during its payments lifecycle. Given below are the various statuses a payment can have:
-
+## Payment Status Lifecycle
+Hyperswitch handles the complex functionality of a comprehensive payments flow through the Payments object that transitions through multiple states during its payments lifecycle. Given below are the various statuses a payment can have:
 | Payment Status           | Description                                                                                                                                                                                                 |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | requires_payment_method  | Once you create a payment through payments/create endpoint with no payment method attached to it, the payments object transitions to ‘requires_payment_method’.                                             |
@@ -68,5 +49,3 @@ Get your [API key](https://app.hyperswitch.io/developers?tabIndex=1) and [Publis
 | failed                   | The payments object transitions to a failed state when the payment processor confirms the processing failure.                                                                                               |
 | expired                  | You can expire the payments object while it is in any state except when it is under ‘processing’ or ‘succeeded’ state.                                                                                      |
   <img src="assets/images/image.png" />
-  </Tab>
-</Tabs>
