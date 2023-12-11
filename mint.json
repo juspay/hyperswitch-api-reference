@@ -23,9 +23,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "Essentials",
@@ -43,6 +41,14 @@
         "api-reference/merchant-account/merchant-account--retrieve",
         "api-reference/merchant-account/merchant-account--update",
         "api-reference/merchant-account/merchant-account--delete"
+      ]
+    },
+    {
+      "group": "Business Profile",
+      "pages": [
+        "api-reference/business-profile/business-profile--create",
+        "api-reference/business-profile/business-profile--update",
+        "api-reference/business-profile/business-profile--list"
       ]
     },
     {
@@ -125,9 +131,7 @@
     },
     {
       "group": "Customers List",
-      "pages": [
-        "api-reference/customers-list/list-customers-for-a-merchant"
-      ]
+      "pages": ["api-reference/customers-list/list-customers-for-a-merchant"]
     },
     {
       "group": "GSM (Global Status Mapping)",
@@ -140,9 +144,7 @@
     },
     {
       "group": "Locker - Health",
-      "pages": [
-        "api-reference/locker-health/get-health"
-      ]
+      "pages": ["api-reference/locker-health/get-health"]
     },
     {
       "group": "Locker - Key Custodian",
@@ -162,9 +164,7 @@
     },
     {
       "group": "Schemas",
-      "pages": [
-        "api-reference/schemas/outgoing--webhook"
-      ]
+      "pages": ["api-reference/schemas/outgoing--webhook"]
     }
   ],
   "footerSocials": {
