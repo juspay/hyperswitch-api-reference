@@ -4938,6 +4938,23 @@
           "payment_method_auth"
         ]
       },
+      "ConnectorVolumeSplit": {
+        "type": "object",
+        "required": [
+          "connector",
+          "split"
+        ],
+        "properties": {
+          "connector": {
+            "$ref": "#/components/schemas/RoutableConnectorChoice"
+          },
+          "split": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
       "CountryAlpha2": {
         "type": "string",
         "enum": [
@@ -7088,11 +7105,6 @@
             ],
             "nullable": true
           },
-          "routing_algorithm": {
-            "type": "object",
-            "description": "The routing algorithm to be used for routing payments to desired connectors",
-            "nullable": true
-          },
           "payout_routing_algorithm": {
             "allOf": [
               {
@@ -7225,14 +7237,6 @@
             "example": true,
             "nullable": true
           },
-          "routing_algorithm": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
-              }
-            ],
-            "nullable": true
-          },
           "payout_routing_algorithm": {
             "allOf": [
               {
@@ -7338,14 +7342,6 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/WebhookDetails"
-              }
-            ],
-            "nullable": true
-          },
-          "routing_algorithm": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
               }
             ],
             "nullable": true
@@ -7468,14 +7464,6 @@
             "example": true,
             "nullable": true
           },
-          "routing_algorithm": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
-              }
-            ],
-            "nullable": true
-          },
           "payout_routing_algorithm": {
             "allOf": [
               {
@@ -7582,14 +7570,6 @@
             "description": "A boolean value to indicate if redirect to merchant with http post needs to be enabled",
             "default": false,
             "example": true,
-            "nullable": true
-          },
-          "routing_algorithm": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RoutingAlgorithm"
-              }
-            ],
             "nullable": true
           },
           "payout_routing_algorithm": {
@@ -9560,6 +9540,14 @@
             "nullable": true,
             "minimum": 0
           },
+          "routing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StraightThroughAlgorithm"
+              }
+            ],
+            "nullable": true
+          },
           "currency": {
             "allOf": [
               {
@@ -9683,15 +9671,6 @@
             ],
             "nullable": true,
             "description": "The billing details of the customer"
-          },
-          "connector": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Connector"
-            },
-            "description": "This allows the merchant to specify a connector with which the payment should go through. This connector choice takes precedence over their routing algorithm",
-            "example": ["stripe", "adyen"],
-            "nullable": true
           },
           "mandate_data": {
             "allOf": [
@@ -9908,6 +9887,14 @@
             "nullable": true,
             "minimum": 0
           },
+          "routing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StraightThroughAlgorithm"
+              }
+            ],
+            "nullable": true
+          },
           "currency": {
             "allOf": [
               {
@@ -10023,15 +10010,6 @@
             ],
             "nullable": true,
             "description": "The billing details of the customer"
-          },
-          "connector": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Connector"
-            },
-            "description": "This allows the merchant to specify a connector with which the payment should go through. This connector choice takes precedence over their routing algorithm",
-            "example": ["stripe", "adyen"],
-            "nullable": true
           },
           "mandate_data": {
             "allOf": [
@@ -11836,6 +11814,82 @@
           }
         }
       },
+      "RoutableConnectorChoice": {
+        "type": "object",
+        "required": [
+          "connector"
+        ],
+        "properties": {
+          "connector": {
+            "$ref": "#/components/schemas/RoutableConnectors"
+          },
+          "merchant_connector_id": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "RoutableConnectors": {
+        "type": "string",
+        "enum": [
+          "phonypay",
+          "fauxpay",
+          "pretendpay",
+          "stripe_test",
+          "adyen_test",
+          "checkout_test",
+          "paypal_test",
+          "aci",
+          "adyen",
+          "airwallex",
+          "authorizedotnet",
+          "bankofamerica",
+          "bitpay",
+          "bambora",
+          "bluesnap",
+          "boku",
+          "braintree",
+          "cashtocode",
+          "checkout",
+          "coinbase",
+          "cryptopay",
+          "cybersource",
+          "dlocal",
+          "fiserv",
+          "forte",
+          "globalpay",
+          "globepay",
+          "gocardless",
+          "helcim",
+          "iatapay",
+          "klarna",
+          "mollie",
+          "multisafepay",
+          "nexinets",
+          "nmi",
+          "noon",
+          "nuvei",
+          "opennode",
+          "payme",
+          "paypal",
+          "payu",
+          "powertranz",
+          "prophetpay",
+          "rapyd",
+          "shift4",
+          "signifyd",
+          "square",
+          "stax",
+          "stripe",
+          "trustpay",
+          "tsys",
+          "volt",
+          "wise",
+          "worldline",
+          "worldpay",
+          "zen"
+        ]
+      },
       "RoutingAlgorithm": {
         "type": "string",
         "description": "The routing algorithm to be used to process the incoming request from merchant to outgoing payment processor or payment method. The default is 'Custom'",
@@ -12059,6 +12113,73 @@
           "initiative_context": {
             "type": "string"
           }
+        }
+      },
+      "StraightThroughAlgorithm": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "single"
+                ]
+              },
+              "data": {
+                "$ref": "#/components/schemas/RoutableConnectorChoice"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "priority"
+                ]
+              },
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RoutableConnectorChoice"
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "type",
+              "data"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "volume_split"
+                ]
+              },
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ConnectorVolumeSplit"
+                }
+              }
+            }
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type"
         }
       },
       "SurchargeDetailsResponse": {
