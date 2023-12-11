@@ -165,6 +165,7 @@ components:
       required:
         - key
     StoreDataReq:
+      title: StoreDataReq
       type: object
       properties:
         merchant_id:
@@ -182,6 +183,7 @@ components:
           type: string
           example: "qwe4tyusdfg"
     RetrieveDataReq:
+      title: RetrieveDataReq
       type: object
       properties:
         merchant_id:
@@ -194,6 +196,7 @@ components:
           type: string
           example: 3ffdf1e5-7f38-4f26-936f-c66a6f4296fa
     DeleteDataReq:
+      title: DeleteDataReq
       type: object
       properties:
         merchant_id:
@@ -206,6 +209,7 @@ components:
           type: string
           example: 3ffdf1e5-7f38-4f26-936f-c66a6f4296fa
     JWEReq:
+      title: JWEReq
       type: object
       properties:
         header:
@@ -219,6 +223,7 @@ components:
         encrypted_key:
           type: string
     RetrieveRes:
+      title: RetrieveRes
       oneOf:
         - type: object
           properties:
@@ -229,6 +234,7 @@ components:
             enc_card_data:
               type: string
     Card:
+      title: Card
       type: object
       required:
         - card_number
@@ -248,26 +254,31 @@ components:
         nick_name:
           type: string
     Key1Set:
+      title: Key1Set
       type: string
       # summary: Response after setting key1
       description: Received Key1
       example: Received Key1
     Key2Set:
+      title: Key2Set
       type: string
       # description: Response after setting key2
       description: Received Key2
       example: Received Key2
     Decrypt200:
+      title: Decrypt200
       type: string
       # description: Response if the locker key custodian decryption was successful
       description: Decryption successful
       example: Decryption successful
     Health:
+      title: Health
       type: string
       # description: Response when the health is good
       description: health is good
       example: health is good
     StoreDataRes:
+      title: StoreDataRes
       type: object
       description: Response received if the data was stored successfully
       properties:
@@ -280,6 +291,7 @@ components:
             card_reference:
               type: string
     RetrieveDataRes:
+      title: RetrieveDataRes
       type: object
       description: Response received with the sensitive data, associated to the card reference
       properties:
@@ -289,6 +301,7 @@ components:
         payload:
           $ref: "#/components/schemas/RetrieveRes"
     DeleteDataRes:
+      title: DeleteDataRes
       type: object
       description: Response received if the data deletion was successful
       properties:
@@ -296,6 +309,7 @@ components:
           type: string
           enum: [Ok]
     JWERes:
+      title: JWERes
       type: object
       description: JWE encrypted response equivalent
       properties:
