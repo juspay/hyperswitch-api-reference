@@ -1947,14 +1947,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PaymentsResponse"
-                },
-                "examples": {
-                  "Create a payment with minimal fields": {
-                    "value": {
-                      "amount": 6540,
-                      "currency": "USD"
-                    }
-                  }
                 }
               }
             }
@@ -2210,28 +2202,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PaymentsResponse"
-                },
-                "examples": {
-                  "Update the payment amount": {
-                    "value": {
-                      "amount": 6544
-                    }
-                  },
-                  "Update shipping address": {
-                    "value": {
-                      "shipping": {
-                        "address": {
-                          "line1": "1467",
-                          "line2": "Harrison Street",
-                          "line3": "Harrison Street",
-                          "city": "San Fransico",
-                          "state": "California",
-                          "zip": "94122",
-                          "country": "US"
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }
