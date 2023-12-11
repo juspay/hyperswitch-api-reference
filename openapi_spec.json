@@ -3111,6 +3111,7 @@
       },
       "AddressDetails": {
         "type": "object",
+        "description": "Address details",
         "properties": {
           "city": {
             "type": "string",

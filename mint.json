@@ -120,12 +120,7 @@
         "api-reference/customers/create-customer",
         "api-reference/customers/retrieve-customer",
         "api-reference/customers/update-customer",
-        "api-reference/customers/delete-customer"
-      ]
-    },
-    {
-      "group": "Customers List",
-      "pages": [
+        "api-reference/customers/delete-customer",
         "api-reference/customers-list/list-customers-for-a-merchant"
       ]
     },
