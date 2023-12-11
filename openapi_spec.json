@@ -655,7 +655,7 @@
         "tags": [
           "Customers"
         ],
-        "summary": "Create Customer",
+        "summary": "Customers - Create",
         "description": "Creates a customer object and stores the customer details to be reused for future payments. Incase the customer already exists in the system, this API will respond with the customer details.",
         "operationId": "Create a Customer",
         "requestBody": {
@@ -703,7 +703,7 @@
         "tags": [
           "Customers"
         ],
-        "summary": "List customers for a merchant",
+        "summary": "Customers - List",
         "description": "Lists all the customers for a particular merchant id",
         "operationId": "List all Customers for a Merchant",
         "responses": {
@@ -851,7 +851,7 @@
         "tags": [
           "Customers"
         ],
-        "summary": "Retrieve Customer",
+        "summary": "Customers - Retrieve",
         "description": "Retrieves a customer's details",
         "operationId": "Retrieve a Customer",
         "parameters": [
@@ -901,7 +901,7 @@
         "tags": [
           "Customers"
         ],
-        "summary": "Update Customer",
+        "summary": "Customers - Update",
         "description": "Updates the customer's details in a customer object",
         "operationId": "Update a Customer",
         "parameters": [
@@ -950,7 +950,7 @@
         "tags": [
           "Customers"
         ],
-        "summary": "Delete Customer",
+        "summary": "Customers - Delete",
         "description": "Deletes a customer record",
         "operationId": "Delete a Customer",
         "parameters": [

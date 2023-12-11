@@ -98,8 +98,8 @@
     {
       "group": "Disputes",
       "pages": [
-        "api-reference/disputes/disputes--list-disputes",
-        "api-reference/disputes/disputes--retrieve-dispute"
+        "api-reference/disputes/disputes--list",
+        "api-reference/disputes/disputes--retrieve"
       ]
     },
     {
@@ -117,11 +117,11 @@
     {
       "group": "Customers",
       "pages": [
-        "api-reference/customers/create-customer",
-        "api-reference/customers/retrieve-customer",
-        "api-reference/customers/update-customer",
-        "api-reference/customers/delete-customer",
-        "api-reference/customers-list/list-customers-for-a-merchant"
+        "api-reference/customers/customers--create",
+        "api-reference/customers/customers--retrieve",
+        "api-reference/customers/customers--update",
+        "api-reference/customers/customers--delete",
+        "api-reference/customers/customers--list"
       ]
     },
     {
