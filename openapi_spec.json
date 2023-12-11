@@ -2050,6 +2050,50 @@
                       }
                     ]
                   }
+                },
+                "Create a payment with a priority routing algorithm": {
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "routing": {
+                      "type": "priority",
+                      "data": [
+                        {
+                          "connector": "stripe",
+                          "merchant_connector_id": "mca_abc123cde"
+                        },
+                        {
+                          "connector": "adyen",
+                          "merchant_connector_id": "mca_xyz789pqr"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "Create a payment with a volume split routing algorithm": {
+                  "value": {
+                    "amount": 6540,
+                    "currency": "USD",
+                    "routing": {
+                      "type": "volume_split",
+                      "data": [
+                        {
+                          "split": 50,
+                          "connector": {
+                            "connector": "stripe",
+                            "merchant_connector_id": "mca_abc123cde"
+                          }
+                        },
+                        {
+                          "split": 50,
+                          "connector": {
+                            "connector": "adyen",
+                            "merchant_connector_id": "mca_xyz789pqr"
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -4950,6 +4994,7 @@
           },
           "split": {
             "type": "integer",
+            "description": "The weight attached to the connector choice. A connector with a higher weight has a higher change of being picked for the payment.",
             "format": "int32",
             "minimum": 0
           }
@@ -9546,6 +9591,7 @@
                 "$ref": "#/components/schemas/StraightThroughAlgorithm"
               }
             ],
+            "description": "A routing algorithm applicable to the current payment that overrides any active algorithm for the business profile",
             "nullable": true
           },
           "currency": {
@@ -9893,6 +9939,7 @@
                 "$ref": "#/components/schemas/StraightThroughAlgorithm"
               }
             ],
+            "description": "A routing algorithm applicable to the current payment that overrides any active algorithm for the business profile",
             "nullable": true
           },
           "currency": {
@@ -11825,12 +11872,14 @@
           },
           "merchant_connector_id": {
             "type": "string",
+            "description": "The ID of the Hyperswitch merchant connector account associated with the connector",
             "nullable": true
           }
         }
       },
       "RoutableConnectors": {
         "type": "string",
+        "description": "Name of the connector.",
         "enum": [
           "phonypay",
           "fauxpay",
@@ -12128,7 +12177,8 @@
                 "type": "string",
                 "enum": [
                   "single"
-                ]
+                ],
+                "description": "A single connector to route the payment through."
               },
               "data": {
                 "$ref": "#/components/schemas/RoutableConnectorChoice"
@@ -12146,7 +12196,8 @@
                 "type": "string",
                 "enum": [
                   "priority"
-                ]
+                ],
+                "description": "A priority list of connectors to route the payment through. The first connector is used for the payment, and subsequent connectors will be used in case of retries."
               },
               "data": {
                 "type": "array",
@@ -12167,7 +12218,8 @@
                 "type": "string",
                 "enum": [
                   "volume_split"
-                ]
+                ],
+                "description": "A list of connectors with a percentage/proportion weight for each connector. The connector for the payment is selected in a weighted random manner based on the given proportions."
               },
               "data": {
                 "type": "array",
