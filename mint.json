@@ -144,6 +144,10 @@
       ]
     },
     {
+      "group": "Hyperswitch Card Vault",
+      "pages": ["locker-api-reference/overview"]
+    },
+    {
       "group": "Locker - Health",
       "pages": [
         "locker-api-reference/locker-health/get-health"
