@@ -6544,40 +6544,51 @@
         ],
         "properties": {
           "connector": {
-            "$ref": "#/components/schemas/Connector"
+            "$ref": "#/components/schemas/Connector",
+            "description": "The connector through which payment has gone through"
           },
           "flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The flow in which the code and message occurred for a connector"
           },
           "sub_flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The sub_flow in which the code and message occurred  for a connector"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "code received from the connector"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "message received from the connector"
           },
           "status": {
-            "type": "string"
+            "type": "string",
+            "description": "status provided by the router"
           },
           "router_error": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "optional error provided by the router"
           },
           "decision": {
-            "$ref": "#/components/schemas/GsmDecision"
+            "$ref": "#/components/schemas/GsmDecision",
+            "description": "decision to be taken for auto retries flow"
           },
           "step_up_possible": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "indicates if step_up retry is possible"
           },
           "unified_code": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "error code unified across the connectors"
           },
           "unified_message": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "error message unified across the connectors"
           }
         }
       },
@@ -6590,19 +6601,24 @@
         "required": ["connector", "flow", "sub_flow", "code", "message"],
         "properties": {
           "connector": {
-            "type": "string"
+            "type": "string",
+            "description": "The connector through which payment has gone through"
           },
           "flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The flow in which the code and message occurred for a connector"
           },
           "sub_flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The sub_flow in which the code and message occurred  for a connector"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "code received from the connector"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "message received from the connector"
           }
         }
       },
@@ -6620,16 +6636,20 @@
             "type": "boolean"
           },
           "connector": {
-            "type": "string"
+            "type": "string",
+            "description": "The connector through which payment has gone through"
           },
           "flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The flow in which the code and message occurred for a connector"
           },
           "sub_flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The sub_flow in which the code and message occurred  for a connector"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "code received from the connector"
           }
         }
       },
@@ -6637,40 +6657,51 @@
         "type": "object",
         "properties": {
           "connector": {
-            "type": "string"
+            "type": "string",
+            "description": "The connector through which payment has gone through"
           },
           "flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The flow in which the code and message occurred for a connector"
           },
           "sub_flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The sub_flow in which the code and message occurred  for a connector"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "code received from the connector"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "message received from the connector"
           },
           "status": {
-            "type": "string"
+            "type": "string",
+            "description": "status provided by the router"
           },
           "router_error": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "optional error provided by the router"
           },
           "decision": {
-            "type": "string"
+            "type": "string",
+            "description": "decision to be taken for auto retries flow"
           },
           "step_up_possible": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "indicates if step_up retry is possible"
           },
           "unified_code": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "error code unified across the connectors"
           },
           "unified_message": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "error message unified across the connectors"
           }
         }
       },
@@ -6679,19 +6710,24 @@
         "required": ["connector", "flow", "sub_flow", "code", "message"],
         "properties": {
           "connector": {
-            "$ref": "#/components/schemas/Connector"
+            "$ref": "#/components/schemas/Connector",
+            "description": "The connector through which payment has gone through"
           },
           "flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The flow in which the code and message occurred for a connector"
           },
           "sub_flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The sub_flow in which the code and message occurred  for a connector"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "code received from the connector"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "message received from the connector"
           }
         }
       },
@@ -6700,27 +6736,34 @@
         "required": ["connector", "flow", "sub_flow", "code", "message"],
         "properties": {
           "connector": {
-            "type": "string"
+            "type": "string",
+            "description": "The connector through which payment has gone through"
           },
           "flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The flow in which the code and message occurred for a connector"
           },
           "sub_flow": {
-            "type": "string"
+            "type": "string",
+            "description": "The sub_flow in which the code and message occurred  for a connector"
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "description": "code received from the connector"
           },
           "message": {
-            "type": "string"
+            "type": "string",
+            "description": "message received from the connector"
           },
           "status": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "status provided by the router"
           },
           "router_error": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "optional error provided by the router"
           },
           "decision": {
             "allOf": [
@@ -6728,19 +6771,23 @@
                 "$ref": "#/components/schemas/GsmDecision"
               }
             ],
-            "nullable": true
+            "nullable": true,
+            "description": "decision to be taken for auto retries flow"
           },
           "step_up_possible": {
             "type": "boolean",
-            "nullable": true
+            "nullable": true,
+            "description": "indicates if step_up retry is possible"
           },
           "unified_code": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "error code unified across the connectors"
           },
           "unified_message": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "description": "error message unified across the connectors"
           }
         }
       },
