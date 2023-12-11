@@ -2183,7 +2183,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Successfully retrieved a payment list"
+            "description": "Successfully retrieved a payment list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentListResponse"
+                }
+              }
+            }
           },
           "404": {
             "description": "No payments found"
