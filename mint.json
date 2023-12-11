@@ -27,9 +27,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
+      "pages": ["introduction"]
     },
     {
       "group": "Essentials",
@@ -47,6 +45,14 @@
         "api-reference/merchant-account/merchant-account--retrieve",
         "api-reference/merchant-account/merchant-account--update",
         "api-reference/merchant-account/merchant-account--delete"
+      ]
+    },
+    {
+      "group": "Business Profile",
+      "pages": [
+        "api-reference/business-profile/business-profile--create",
+        "api-reference/business-profile/business-profile--update",
+        "api-reference/business-profile/business-profile--list"
       ]
     },
     {
@@ -161,9 +167,7 @@
     },
     {
       "group": "Schemas",
-      "pages": [
-        "api-reference/schemas/outgoing--webhook"
-      ]
+      "pages": ["api-reference/schemas/outgoing--webhook"]
     }
   ],
   "footerSocials": {
