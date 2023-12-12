@@ -8488,6 +8488,7 @@
         "oneOf": [
           {
             "type": "object",
+            "title": "payment_details",
             "required": ["type", "object"],
             "properties": {
               "type": {
@@ -8501,6 +8502,7 @@
           },
           {
             "type": "object",
+            "title": "refund_details",
             "required": ["type", "object"],
             "properties": {
               "type": {
@@ -8514,6 +8516,7 @@
           },
           {
             "type": "object",
+            "title": "dispute_details",
             "required": ["type", "object"],
             "properties": {
               "type": {
@@ -8527,6 +8530,7 @@
           },
           {
             "type": "object",
+            "title": "mandate_details",
             "required": ["type", "object"],
             "properties": {
               "type": {
