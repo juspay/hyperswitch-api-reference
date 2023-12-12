@@ -7681,7 +7681,7 @@
           },
           "connector_label": {
             "type": "string",
-            "description": "This is an unique label you can generate and pass in order to identify this connector account on your Hyperswitch dashboard and reports. Eg: if your profile label is 'default', connector label can be 'stripe_default'",
+            "description": "This is an unique label you can generate and pass in order to identify this connector account on your Hyperswitch dashboard and reports. Eg: if your profile label is `default`, connector label can be `stripe_default`",
             "example": "stripe_US_travel",
             "nullable": true
           },
@@ -7995,7 +7995,7 @@
           },
           "connector_label": {
             "type": "string",
-            "description": "A unique label to identify the connector account created under a business profile",
+            "description": "This is an unique label you can generate and pass in order to identify this connector account on your Hyperswitch dashboard and reports. Eg: if your profile label is `default`, connector label can be `stripe_default`",
             "example": "stripe_US_travel",
             "nullable": true
           },
@@ -10585,7 +10585,7 @@
           },
           "connector_label": {
             "type": "string",
-            "description": "The connector used for this payment along with the country and business details",
+            "description": "The connector label of the connector used for this payment",
             "example": "stripe_US_food",
             "nullable": true
           },
