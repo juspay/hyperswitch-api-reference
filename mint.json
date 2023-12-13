@@ -52,7 +52,8 @@
       "pages": [
         "api-reference/business-profile/business-profile--create",
         "api-reference/business-profile/business-profile--update",
-        "api-reference/business-profile/business-profile--list"
+        "api-reference/business-profile/business-profile--list",
+        "api-reference/business-profile/business-profile--delete"
       ]
     },
     {
