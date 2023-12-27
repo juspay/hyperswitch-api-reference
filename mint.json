@@ -39,91 +39,30 @@
       ]
     },
     {
-      "group": "Merchant Account",
-      "pages": [
-        "api-reference/merchant-account/merchant-account--create",
-        "api-reference/merchant-account/merchant-account--retrieve",
-        "api-reference/merchant-account/merchant-account--update",
-        "api-reference/merchant-account/merchant-account--delete"
-      ]
-    },
-    {
-      "group": "Business Profile",
-      "pages": [
-        "api-reference/business-profile/business-profile--create",
-        "api-reference/business-profile/business-profile--update",
-        "api-reference/business-profile/business-profile--list",
-        "api-reference/business-profile/business-profile--delete"
-      ]
-    },
-    {
-      "group": "Merchant Connector Account",
-      "pages": [
-        "api-reference/merchant-connector-account/merchant-connector--create",
-        "api-reference/merchant-connector-account/merchant-connector--retrieve",
-        "api-reference/merchant-connector-account/merchant-connector--update",
-        "api-reference/merchant-connector-account/merchant-connector--delete",
-        "api-reference/merchant-connector-account/merchant-connector--list"
-      ]
-    },
-    {
       "group": "Payments",
       "pages": [
         "api-reference/payments/payments--create",
-        "api-reference/payments/payments--list",
-        "api-reference/payments/payments--session-token",
-        "api-reference/payments/payments--retrieve",
         "api-reference/payments/payments--update",
+        "api-reference/payments/payments--confirm",
+        "api-reference/payments/payments--retrieve",
         "api-reference/payments/payments--cancel",
         "api-reference/payments/payments--capture",
-        "api-reference/payments/payments--confirm",
         "api-reference/payments/payments--incremental-authorization",
-        "api-reference/payments/payments-link--retrieve"
-      ]
-    },
-    {
-      "group": "Refunds",
-      "pages": [
-        "api-reference/refunds/refunds--create",
-        "api-reference/refunds/refunds--list",
-        "api-reference/refunds/refunds--retrieve",
-        "api-reference/refunds/refunds--update"
-      ]
-    },
-    {
-      "group": "Payouts",
-      "pages": [
-        "api-reference/payouts/payouts--create",
-        "api-reference/payouts/payouts--retrieve",
-        "api-reference/payouts/payouts--update",
-        "api-reference/payouts/payouts--cancel",
-        "api-reference/payouts/payouts--fulfill"
-      ]
-    },
-    {
-      "group": "Mandates",
-      "pages": [
-        "api-reference/mandates/mandates--revoke-mandate",
-        "api-reference/mandates/mandates--retrieve-mandate"
-      ]
-    },
-    {
-      "group": "Disputes",
-      "pages": [
-        "api-reference/disputes/disputes--list",
-        "api-reference/disputes/disputes--retrieve"
+        "api-reference/payments/payments--session-token",
+        "api-reference/payments/payments-link--retrieve",
+        "api-reference/payments/payments--list"
       ]
     },
     {
       "group": "Payment Methods",
       "pages": [
-        "api-reference/payment-methods/list-payment-methods-for-a-merchant",
-        "api-reference/payment-methods/list-payment-methods-for-a-customer",
-        "api-reference/payment-methods/list-payment-methods-for-a-customer-1",
         "api-reference/payment-methods/paymentmethods--create",
         "api-reference/payment-methods/payment-method--retrieve",
         "api-reference/payment-methods/payment-method--update",
-        "api-reference/payment-methods/payment-method--delete"
+        "api-reference/payment-methods/payment-method--delete",
+        "api-reference/payment-methods/list-payment-methods-for-a-merchant",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer-1"
       ]
     },
     {
@@ -137,12 +76,73 @@
       ]
     },
     {
+      "group": "Mandates",
+      "pages": [
+        "api-reference/mandates/mandates--revoke-mandate",
+        "api-reference/mandates/mandates--retrieve-mandate"
+      ]
+    },
+    {
+      "group": "Refunds",
+      "pages": [
+        "api-reference/refunds/refunds--create",
+        "api-reference/refunds/refunds--update",
+        "api-reference/refunds/refunds--retrieve",
+        "api-reference/refunds/refunds--list"
+      ]
+    },
+    {
+      "group": "Disputes",
+      "pages": [
+        "api-reference/disputes/disputes--retrieve",
+        "api-reference/disputes/disputes--list"
+      ]
+    },
+    {
+      "group": "Merchant Account",
+      "pages": [
+        "api-reference/merchant-account/merchant-account--create",
+        "api-reference/merchant-account/merchant-account--retrieve",
+        "api-reference/merchant-account/merchant-account--update",
+        "api-reference/merchant-account/merchant-account--delete"
+      ]
+    },
+    {
+      "group": "Business Profile",
+      "pages": [
+        "api-reference/business-profile/business-profile--create",
+        "api-reference/business-profile/business-profile--update",
+        "api-reference/business-profile/business-profile--delete",
+        "api-reference/business-profile/business-profile--list"
+      ]
+    },
+    {
+      "group": "Merchant Connector Account",
+      "pages": [
+        "api-reference/merchant-connector-account/merchant-connector--create",
+        "api-reference/merchant-connector-account/merchant-connector--retrieve",
+        "api-reference/merchant-connector-account/merchant-connector--update",
+        "api-reference/merchant-connector-account/merchant-connector--delete",
+        "api-reference/merchant-connector-account/merchant-connector--list"
+      ]
+    },
+    {
+      "group": "Payouts",
+      "pages": [
+        "api-reference/payouts/payouts--create",
+        "api-reference/payouts/payouts--retrieve",
+        "api-reference/payouts/payouts--update",
+        "api-reference/payouts/payouts--cancel",
+        "api-reference/payouts/payouts--fulfill"
+      ]
+    },
+    {
       "group": "GSM (Global Status Mapping)",
       "pages": [
         "api-reference/gsm/gsm--create",
-        "api-reference/gsm/gsm--delete",
         "api-reference/gsm/gsm--get",
-        "api-reference/gsm/gsm--update"
+        "api-reference/gsm/gsm--update",
+        "api-reference/gsm/gsm--delete"
       ]
     },
     {
