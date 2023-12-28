@@ -183,5 +183,8 @@
   "openapi": [
     "openapi_spec.json",
     "rust_locker_open_api_spec.yml"
-  ]
+  ],
+  "api": {
+    "maintainOrder": true
+  }
 }
