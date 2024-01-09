@@ -61,8 +61,8 @@
         "api-reference/payment-methods/payment-method--update",
         "api-reference/payment-methods/payment-method--delete",
         "api-reference/payment-methods/list-payment-methods-for-a-merchant",
-        "api-reference/payment-methods/list-payment-methods-for-a-customer",
-        "api-reference/payment-methods/list-payment-methods-for-a-customer-1"
+        "api-reference/payment-methods/list-payment-methods-for-a-payment",
+        "api-reference/payment-methods/list-payment-methods-for-a-customer"
       ]
     },
     {
