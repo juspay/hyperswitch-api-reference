@@ -2398,7 +2398,7 @@
       "post": {
         "tags": ["Payments"],
         "summary": "Payments - Update",
-        "description": "Payments - Update\n\nTo update the properties of a *PaymentIntent* object. This may include attaching a payment method, or attaching customer object or metadata fields after the Payment is created",
+        "description": "Payments - Update\n\n Updates a Payment. Use this API to attach a payment method and metadata fields after the Payment is created. `amount`, `currency` and `customer_id` cannot be updated using client secret and publishable_key auth due to security reasons",
         "operationId": "Update a Payment",
         "parameters": [
           {
@@ -2589,7 +2589,7 @@
       "post": {
         "tags": ["Payments"],
         "summary": "Payments - Confirm",
-        "description": "Payments - Confirm\n\n**Use this API to confirm the payment and forward the payment to the payment processor.**\\n\\nAlternatively you can confirm the payment within the *Payments/Create* API by setting `confirm=true`. After confirmation, the payment could either:\\n\\n1. fail with `failed` status or\\n\\n2. transition to a `requires_customer_action` status with a `next_action` block or\\n\\n3. succeed with either `succeeded` in case of automatic capture or `requires_capture` in case of manual capture",
+        "description": "Payments - Confirm \n\n **Use this API to confirm the payment and forward the payment to the payment processor.** \n\n Alternatively you can confirm the payment within the *Payments/Create* API by setting `confirm=true`. After confirmation, the payment could either: \n \n 1. fail with `failed` status or \n \n 2. transition to a `requires_customer_action` status with a `next_action` block or \n \n 3. succeed with either `succeeded` in case of automatic capture or `requires_capture` in case of manual capture",
         "operationId": "Confirm a Payment",
         "parameters": [
           {
