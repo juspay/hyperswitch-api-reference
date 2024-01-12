@@ -2755,6 +2755,228 @@
         ]
       }
     },
+    "/payouts/create": {
+      "post": {
+        "tags": ["Payouts"],
+        "summary": "Payouts - Create",
+        "description": "Payouts - Create",
+        "operationId": "Create a Payout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayoutCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Payout created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayoutCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Mandatory fields"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/payouts/{payout_id}": {
+      "get": {
+        "tags": ["Payouts"],
+        "summary": "Payouts - Retrieve",
+        "description": "Payouts - Retrieve",
+        "operationId": "Retrieve a Payout",
+        "parameters": [
+          {
+            "name": "payout_id",
+            "in": "path",
+            "description": "The identifier for payout]",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payout retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayoutCreateResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Payout does not exist in our records"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["Payouts"],
+        "summary": "Payouts - Update",
+        "description": "Payouts - Update",
+        "operationId": "Update a Payout",
+        "parameters": [
+          {
+            "name": "payout_id",
+            "in": "path",
+            "description": "The identifier for payout]",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayoutCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Payout updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayoutCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Mandatory fields"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/payouts/{payout_id}/cancel": {
+      "post": {
+        "tags": ["Payouts"],
+        "summary": "Payouts - Cancel",
+        "description": "Payouts - Cancel",
+        "operationId": "Cancel a Payout",
+        "parameters": [
+          {
+            "name": "payout_id",
+            "in": "path",
+            "description": "The identifier for payout",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayoutActionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Payout cancelled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayoutCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Mandatory fields"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/payouts/{payout_id}/fulfill": {
+      "post": {
+        "tags": ["Payouts"],
+        "summary": "Payouts - Fulfill",
+        "description": "Payouts - Fulfill",
+        "operationId": "Fulfill a Payout",
+        "parameters": [
+          {
+            "name": "payout_id",
+            "in": "path",
+            "description": "The identifier for payout",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayoutActionRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Payout fulfilled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayoutCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing Mandatory fields"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
     "/refunds": {
       "post": {
         "tags": ["Refunds"],
