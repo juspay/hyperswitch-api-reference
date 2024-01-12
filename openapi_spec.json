@@ -1832,6 +1832,58 @@
         ]
       }
     },
+    "/payment_link/{payment_link_id}": {
+      "get": {
+        "tags": ["Payments"],
+        "summary": "Payments Link - Retrieve",
+        "description": "Payments Link - Retrieve\n\nTo retrieve the properties of a Payment Link. This may be used to get the status of a previously initiated payment or next action for an ongoing payment",
+        "operationId": "Retrieve a Payment Link",
+        "parameters": [
+          {
+            "name": "payment_link_id",
+            "in": "path",
+            "description": "The identifier for payment link",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RetrievePaymentLinkRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Gets details regarding payment link",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RetrievePaymentLinkResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No payment link found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          },
+          {
+            "publishable_key": []
+          }
+        ]
+      }
+    },
     "/payment_methods": {
       "post": {
         "tags": ["Payment Methods"],
