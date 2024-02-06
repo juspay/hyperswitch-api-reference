@@ -58,7 +58,6 @@
       "pages": [
         "api-reference/payment-methods/paymentmethods--create",
         "api-reference/payment-methods/payment-method--retrieve",
-        "api-reference/payment-methods/payment-method--update",
         "api-reference/payment-methods/payment-method--delete",
         "api-reference/payment-methods/list-payment-methods-for-a-merchant",
         "api-reference/payment-methods/list-payment-methods-for-a-payment",
