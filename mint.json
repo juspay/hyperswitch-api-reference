@@ -78,7 +78,8 @@
       "group": "Mandates",
       "pages": [
         "api-reference/mandates/mandates--revoke-mandate",
-        "api-reference/mandates/mandates--retrieve-mandate"
+        "api-reference/mandates/mandates--retrieve-mandate",
+        "api-reference/mandates/customers--mandates-list"
       ]
     },
     {
