@@ -178,6 +178,21 @@
       ]
     },
     {
+      "group": "Routing",
+      "pages": [
+        "api-reference/routing/routing--list",
+        "api-reference/routing/routing--create",
+        "api-reference/routing/routing--retrieve-config",
+        "api-reference/routing/routing--deactivate",
+        "api-reference/routing/routing--retrieve-default-config",
+        "api-reference/routing/routing--update-default-config",
+        "api-reference/routing/routing--retrieve-default-for-profile",
+        "api-reference/routing/routing--update-default-for-profile",
+        "api-reference/routing/routing--retrieve",
+        "api-reference/routing/routing--activate-config"
+      ]
+    },
+    {
       "group": "Schemas",
       "pages": ["api-reference/schemas/outgoing--webhook"]
     }
