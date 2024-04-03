@@ -167,7 +167,8 @@
       "pages": [
         "locker-api-reference/cards/add-data-in-locker",
         "locker-api-reference/cards/delete-data-from-locker",
-        "locker-api-reference/cards/retrieve-data-from-locker"
+        "locker-api-reference/cards/retrieve-data-from-locker",
+        "locker-api-reference/cards/get-or-insert-the-card-fingerprint"
       ]
     },
     {
