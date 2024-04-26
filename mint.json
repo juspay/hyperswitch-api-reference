@@ -50,7 +50,8 @@
         "api-reference/payments/payments--incremental-authorization",
         "api-reference/payments/payments--session-token",
         "api-reference/payments/payments-link--retrieve",
-        "api-reference/payments/payments--list"
+        "api-reference/payments/payments--list",
+        "api-reference/payments/payments--external-3ds-authentication"
       ]
     },
     {
@@ -58,6 +59,7 @@
       "pages": [
         "api-reference/payment-methods/paymentmethods--create",
         "api-reference/payment-methods/payment-method--retrieve",
+        "api-reference/payment-methods/payment-method--update",
         "api-reference/payment-methods/payment-method--delete",
         "api-reference/payment-methods/list-payment-methods-for-a-merchant",
         "api-reference/payment-methods/list-payment-methods-for-a-payment",
@@ -105,7 +107,8 @@
         "api-reference/merchant-account/merchant-account--create",
         "api-reference/merchant-account/merchant-account--retrieve",
         "api-reference/merchant-account/merchant-account--update",
-        "api-reference/merchant-account/merchant-account--delete"
+        "api-reference/merchant-account/merchant-account--delete",
+        "api-reference/merchant-account/merchant-account--kv-status"
       ]
     },
     {
@@ -115,6 +118,15 @@
         "api-reference/business-profile/business-profile--update",
         "api-reference/business-profile/business-profile--delete",
         "api-reference/business-profile/business-profile--list"
+      ]
+    },
+    {
+      "group": "API Key",
+      "pages": [
+        "api-reference/api-key/api-key--create",
+        "api-reference/api-key/api-key--retrieve",
+        "api-reference/api-key/api-key--update",
+        "api-reference/api-key/api-key--revoke"
       ]
     },
     {
@@ -135,6 +147,14 @@
         "api-reference/payouts/payouts--update",
         "api-reference/payouts/payouts--cancel",
         "api-reference/payouts/payouts--fulfill"
+      ]
+    },
+    {
+      "group": "Event",
+      "pages": [
+        "api-reference/event/events--list",
+        "api-reference/event/events--delivery-attempt-list",
+        "api-reference/event/events--manual-retry"
       ]
     },
     {
@@ -176,7 +196,8 @@
       "pages": [
         "api-reference/blocklist/get-blocklist",
         "api-reference/blocklist/post-blocklist",
-        "api-reference/blocklist/delete-blocklist"
+        "api-reference/blocklist/delete-blocklist",
+        "api-reference/blocklist/post-blocklisttoggle"
       ]
     },
     {
