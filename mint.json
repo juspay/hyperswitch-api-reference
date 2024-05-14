@@ -61,8 +61,9 @@
         "api-reference/payment-methods/payment-method--retrieve",
         "api-reference/payment-methods/payment-method--update",
         "api-reference/payment-methods/payment-method--delete",
+        "api-reference/payment-methods/payment-method--set-default-payment-method-for-customer",
         "api-reference/payment-methods/list-payment-methods-for-a-merchant",
-        "api-reference/payment-methods/list-payment-methods-for-a-payment",
+        "api-reference/payment-methods/list-customer-saved-payment-methods-for-a-payment",
         "api-reference/payment-methods/list-payment-methods-for-a-customer",
         "api-reference/customer-set-default-payment-method/customers--set-default-payment-method"
       ]
@@ -82,7 +83,7 @@
       "pages": [
         "api-reference/mandates/mandates--revoke-mandate",
         "api-reference/mandates/mandates--retrieve-mandate",
-        "api-reference/mandates/customers--mandates-list"
+        "api-reference/mandates/mandates--customer-mandates-list"
       ]
     },
     {
@@ -116,6 +117,7 @@
       "pages": [
         "api-reference/business-profile/business-profile--create",
         "api-reference/business-profile/business-profile--update",
+        "api-reference/business-profile/business-profile--retrieve",
         "api-reference/business-profile/business-profile--delete",
         "api-reference/business-profile/business-profile--list"
       ]
@@ -146,7 +148,9 @@
         "api-reference/payouts/payouts--retrieve",
         "api-reference/payouts/payouts--update",
         "api-reference/payouts/payouts--cancel",
-        "api-reference/payouts/payouts--fulfill"
+        "api-reference/payouts/payouts--fulfill",
+        "api-reference/payouts/payouts--list",
+        "api-reference/payouts/payouts--filter"
       ]
     },
     {
@@ -164,6 +168,12 @@
         "api-reference/gsm/gsm--get",
         "api-reference/gsm/gsm--update",
         "api-reference/gsm/gsm--delete"
+      ]
+    },
+    {
+      "group": "Poll",
+      "pages": [
+        "api-reference/poll/poll--retrieve-poll-status"
       ]
     },
     {
