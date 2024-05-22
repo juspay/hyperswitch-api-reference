@@ -51,7 +51,8 @@
         "api-reference/payments/payments--session-token",
         "api-reference/payments/payments-link--retrieve",
         "api-reference/payments/payments--list",
-        "api-reference/payments/payments--external-3ds-authentication"
+        "api-reference/payments/payments--external-3ds-authentication",
+        "api-reference/payments/payments--complete-authorize"
       ]
     },
     {
@@ -172,9 +173,7 @@
     },
     {
       "group": "Poll",
-      "pages": [
-        "api-reference/poll/poll--retrieve-poll-status"
-      ]
+      "pages": ["api-reference/poll/poll--retrieve-poll-status"]
     },
     {
       "group": "Hyperswitch Card Vault",
